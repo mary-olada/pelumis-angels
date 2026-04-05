@@ -7,10 +7,10 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  PROJECT_ID: pelumis-angels-site
   REGION: us-central1
   SERVICE_NAME: pelumis-angels
-  IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/pelumis-angels
+  IMAGE_NAME: gcr.io/pelumis-angels-site/pelumis-angels
 
 jobs:
   deploy:
@@ -27,8 +27,6 @@ jobs:
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
 
       - name: Configure Docker for GCR
         run: gcloud auth configure-docker --quiet
@@ -64,4 +62,4 @@ jobs:
           URL=$(gcloud run services describe ${{ env.SERVICE_NAME }} \
             --region ${{ env.REGION }} \
             --format 'value(status.url)')
-          echo "✅ Pelumi's Angels is live at: $URL"
+          echo "✅ Pelumis Angels is live at: $URL"
