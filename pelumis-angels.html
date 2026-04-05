@@ -461,7 +461,7 @@
     margin: 0 auto;
   }
 
-  .menu-card {
+  .menu-card { padding: 1.2rem !important;
     background: var(--black-mid);
     padding: 2rem;
     border: 1px solid rgba(201,168,76,0.08);
@@ -1004,10 +1004,10 @@
     .strip-sep { display: none; }
     section { padding: 4rem 1.5rem; }
     .about { grid-template-columns: 1fr; gap: 2.5rem; }
-    .menu-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
     .meal-prep { grid-template-columns: 1fr; gap: 2.5rem; }
-    .videos-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .experiences-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .experiences-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
     .exp-card { padding: 2rem 1.5rem; }
     .private-details { grid-template-columns: 1fr; }
     .ebt-inner { grid-template-columns: 1fr; gap: 2.5rem; }
