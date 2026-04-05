@@ -991,6 +991,8 @@
     text-decoration: none;
   }
 
+  .party-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:1.5rem; margin-bottom:3rem; }
+  @media (max-width: 768px) { .party-grid { grid-template-columns: repeat(2, 1fr); } }
   /* ── MOBILE RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; flex-direction: column; gap: 0.8rem; background: rgba(8,8,8,0.98) !important; }
@@ -1977,7 +1979,7 @@
       <p style="font-size:0.85rem; color:var(--text-muted); max-width:560px; margin:0 auto; line-height:1.9;">Perfect for events, celebrations, and gatherings. All items are priced per quantity — contact us to discuss your headcount and we'll build a package just for you.</p>
     </div>
 
-    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.5rem; margin-bottom:3rem;">
+    <div class="party-grid">
 
       <!-- Rice & Mains -->
       <div style="background:var(--black-mid); border:1px solid rgba(201,168,76,0.1); padding:2rem;">
