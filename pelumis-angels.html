@@ -1,0 +1,2554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pelumi's Angels — Culinary Experience</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Didact+Gothic&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8cc80;
+    --gold-pale: #f5e9c8;
+    --black: #080808;
+    --black-soft: #111111;
+    --black-mid: #1a1a1a;
+    --charcoal: #2a2a2a;
+    --cream: #f9f4ec;
+    --white: #ffffff;
+    --text-muted: #888;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Didact Gothic', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 4rem;
+    background: linear-gradient(to bottom, rgba(8,8,8,0.98), transparent);
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    font-size: 1.05rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 0.5rem 1.4rem;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--black) !important;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 60%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%),
+      linear-gradient(180deg, #080808 0%, #0f0a04 50%, #080808 100%);
+  }
+
+  .hero-line {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    margin: 0 auto 2.5rem;
+    animation: fadeDown 1.2s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.45em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 1s 0.3s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4.5rem, 10vw, 9rem);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    animation: fadeUp 1s 0.5s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+    letter-spacing: 0.05em;
+    animation: fadeUp 1s 0.7s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 3rem;
+    animation: fadeUp 1s 0.9s ease forwards;
+    opacity: 0;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 1rem 2.8rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(249,244,236,0.3);
+    padding: 1rem 2.8rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeUp 1s 1.2s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-scroll span {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 7rem 4rem; }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--cream);
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 2rem 0;
+    opacity: 0.6;
+  }
+
+  /* ── INTRO STRIP ── */
+  .intro-strip {
+    background: var(--black-mid);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .intro-strip-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .intro-strip-item strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gold);
+  }
+
+  .intro-strip-item span {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .strip-sep {
+    width: 1px;
+    height: 50px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-img-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--black-mid);
+    border: 1px solid rgba(201,168,76,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-img-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 30% 40%, rgba(201,168,76,0.12), transparent 60%),
+      linear-gradient(135deg, var(--black-mid), #1a1208);
+  }
+
+  .about-img-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .about-img-icon {
+    font-size: 4rem;
+    opacity: 0.3;
+  }
+
+  .about-img-text {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  .about-corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.5;
+  }
+
+  .about-corner.tl { top: -10px; left: -10px; border-width: 1px 0 0 1px; }
+  .about-corner.br { bottom: -10px; right: -10px; border-width: 0 1px 1px 0; }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: rgba(249,244,236,0.7);
+    margin-bottom: 1.2rem;
+  }
+
+  .about-text p strong {
+    color: var(--gold-light);
+    font-weight: 400;
+  }
+
+  /* ── MENU ── */
+  .menu-section {
+    background: var(--black-soft);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu-section::before {
+    content: 'MENU';
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: 'Cinzel', serif;
+    font-size: 8rem;
+    color: rgba(201,168,76,0.03);
+    pointer-events: none;
+    white-space: nowrap;
+    letter-spacing: 0.5em;
+  }
+
+  .menu-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .menu-categories {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .menu-cat-btn {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--text-muted);
+    padding: 0.5rem 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .menu-cat-btn.active,
+  .menu-cat-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .menu-card {
+    background: var(--black-mid);
+    padding: 2rem;
+    border: 1px solid rgba(201,168,76,0.08);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+
+  .menu-card:hover {
+    border-color: rgba(201,168,76,0.25);
+    background: #1a1208;
+  }
+
+  .menu-card:hover::after { transform: scaleX(1); }
+
+  .menu-card-emoji { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+
+  .menu-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .menu-card-desc {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+  }
+
+  .menu-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+  }
+
+  .menu-add-btn {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+  }
+
+  .menu-add-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* ── MEAL PREP ── */
+  .meal-prep {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .prep-kits {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .prep-kit {
+    background: var(--black-mid);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .prep-kit:hover {
+    border-color: rgba(201,168,76,0.4);
+    background: #1a1208;
+  }
+
+  .prep-kit-icon {
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .prep-kit-info { flex: 1; }
+
+  .prep-kit-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+
+  .prep-kit-desc {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .prep-kit-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* ── VIDEOS ── */
+  .videos-section {
+    background: var(--black-soft);
+    text-align: center;
+  }
+
+  .videos-header { margin-bottom: 3rem; }
+
+  .lock-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.4rem 1rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+  }
+
+  .video-card {
+    background: var(--black-mid);
+    border: 1px solid rgba(201,168,76,0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: all 0.4s;
+    cursor: pointer;
+  }
+
+  .video-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+
+  .video-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #1a1208, #0f0a04);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .video-thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 40% 40%, rgba(201,168,76,0.12), transparent 60%);
+  }
+
+  .play-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(201,168,76,0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s;
+  }
+
+  .video-card:hover .play-btn {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  .video-locked {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    background: rgba(8,8,8,0.8);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 0.25rem 0.6rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .video-info { padding: 1.2rem; }
+
+  .video-cat {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .video-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+
+  .video-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+
+  .video-price {
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+  }
+
+  /* ── EXPERIENCES ── */
+  .experiences-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 3rem auto 0;
+  }
+
+  .exp-card {
+    position: relative;
+    background: var(--black-mid);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 3rem;
+    overflow: hidden;
+    transition: all 0.4s;
+  }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .exp-card:hover::before { transform: scaleX(1); }
+
+  .exp-card:hover {
+    border-color: rgba(201,168,76,0.25);
+    background: #14100a;
+  }
+
+  .exp-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 300;
+    color: rgba(201,168,76,0.08);
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    line-height: 1;
+  }
+
+  .exp-icon { font-size: 2rem; margin-bottom: 1.5rem; display: block; }
+
+  .exp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 0.8rem;
+  }
+
+  .exp-desc {
+    font-size: 0.82rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .exp-price-tag {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    border-top: 1px solid rgba(201,168,76,0.3);
+    padding-top: 0.8rem;
+  }
+
+  /* ── PRIVATE DINNERS ── */
+  .private-section {
+    background: linear-gradient(135deg, #0a0804, #111108, #080808);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .private-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(201,168,76,0.05), transparent);
+  }
+
+  .private-inner {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .private-ornament {
+    font-size: 2.5rem;
+    color: var(--gold);
+    opacity: 0.4;
+    margin-bottom: 1.5rem;
+    display: block;
+    letter-spacing: 0.3em;
+  }
+
+  .private-body {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: rgba(249,244,236,0.65);
+    margin: 1.5rem 0 2.5rem;
+  }
+
+  .private-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    margin: 2.5rem 0;
+  }
+
+  .private-detail {
+    background: var(--black);
+    padding: 1.5rem;
+  }
+
+  .private-detail-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    font-weight: 300;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .private-detail-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── INSTAGRAM ── */
+  .instagram-section {
+    text-align: center;
+    padding: 5rem 4rem;
+    background: var(--black-soft);
+  }
+
+  .ig-handle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .ig-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+    max-width: 900px;
+    margin: 2rem auto;
+  }
+
+  .ig-cell {
+    aspect-ratio: 1;
+    background: var(--black-mid);
+    border: 1px solid rgba(201,168,76,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .ig-cell:hover {
+    border-color: rgba(201,168,76,0.4);
+    background: #1a1208;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050505;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 4rem 4rem 2rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-brand-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand-body {
+    font-size: 0.75rem;
+    line-height: 1.8;
+    color: rgba(136,136,136,0.7);
+  }
+
+  .footer-col-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(201,168,76,0.08);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 0.65rem;
+    color: rgba(136,136,136,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-ig {
+    font-size: 0.65rem;
+    color: var(--gold);
+    opacity: 0.6;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--black-mid);
+    border: 1px solid var(--gold);
+    color: var(--cream);
+    padding: 1rem 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    z-index: 999;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ── EBT SECTION ── */
+  .ebt-section {
+    background: linear-gradient(135deg, #080808, #0c0f08, #080808);
+    position: relative;
+    overflow: hidden;
+    padding: 7rem 4rem;
+  }
+
+  .ebt-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 30% 50%, rgba(120,180,80,0.05), transparent);
+    pointer-events: none;
+  }
+
+  .ebt-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .ebt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(120,180,80,0.1);
+    border: 1px solid rgba(120,180,80,0.35);
+    padding: 0.45rem 1.1rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #8ec85a;
+    margin-bottom: 1.2rem;
+    display: inline-flex;
+  }
+
+  .ebt-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .ebt-title em {
+    font-style: italic;
+    color: #8ec85a;
+  }
+
+  .ebt-body {
+    font-size: 0.88rem;
+    line-height: 1.9;
+    color: rgba(249,244,236,0.65);
+    margin: 1.2rem 0 2rem;
+  }
+
+  .ebt-perks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .ebt-perk {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: rgba(249,244,236,0.7);
+    line-height: 1.6;
+  }
+
+  .ebt-perk-dot {
+    width: 6px;
+    height: 6px;
+    background: #8ec85a;
+    border-radius: 50%;
+    margin-top: 0.45rem;
+    flex-shrink: 0;
+  }
+
+  .btn-ebt {
+    background: #8ec85a;
+    color: #080808;
+    border: none;
+    padding: 1rem 2.8rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-ebt:hover {
+    background: #a8d878;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(142,200,90,0.25);
+  }
+
+  /* EBT Video Cards */
+  .ebt-videos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ebt-video-card {
+    background: var(--black-mid);
+    border: 1px solid rgba(120,180,80,0.12);
+    padding: 1.4rem 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ebt-video-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: #8ec85a;
+    transform: scaleY(0);
+    transition: transform 0.3s;
+  }
+
+  .ebt-video-card:hover::before { transform: scaleY(1); }
+
+  .ebt-video-card:hover {
+    border-color: rgba(120,180,80,0.3);
+    background: #111408;
+  }
+
+  .ebt-play {
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(142,200,90,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8ec85a;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+
+  .ebt-video-card:hover .ebt-play {
+    background: #8ec85a;
+    color: #080808;
+  }
+
+  .ebt-video-info { flex: 1; }
+
+  .ebt-video-cat {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #8ec85a;
+    margin-bottom: 0.3rem;
+  }
+
+  .ebt-video-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+  }
+
+  .ebt-video-meta {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+
+  .ebt-price-tag {
+    background: rgba(120,180,80,0.12);
+    border: 1px solid rgba(120,180,80,0.25);
+    color: #8ec85a;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    padding: 0.3rem 0.8rem;
+    white-space: nowrap;
+  }
+
+  .ebt-locked-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(8,8,8,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+    z-index: 2;
+  }
+
+  .ebt-locked-msg {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8ec85a;
+    border: 1px solid rgba(120,180,80,0.4);
+    padding: 0.5rem 1.2rem;
+    background: rgba(8,8,8,0.8);
+  }
+
+  /* ── EBT MODAL ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal-box {
+    background: #111111;
+    border: 1px solid rgba(120,180,80,0.3);
+    max-width: 500px;
+    width: 90%;
+    padding: 3rem;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.4s;
+  }
+
+  .modal-overlay.open .modal-box {
+    transform: translateY(0);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .modal-close:hover { color: var(--cream); }
+
+  .modal-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-title em { font-style: italic; color: #8ec85a; }
+
+  .modal-subtitle {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .modal-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .modal-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .modal-step-num {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(120,180,80,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    color: #8ec85a;
+    flex-shrink: 0;
+  }
+
+  .modal-step-text {
+    font-size: 0.78rem;
+    color: rgba(249,244,236,0.7);
+    line-height: 1.7;
+    padding-top: 0.2rem;
+  }
+
+  .modal-step-text strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .modal-upload-area {
+    border: 1px dashed rgba(120,180,80,0.35);
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: rgba(120,180,80,0.03);
+  }
+
+  .modal-upload-area:hover {
+    border-color: rgba(120,180,80,0.6);
+    background: rgba(120,180,80,0.06);
+  }
+
+  .modal-upload-icon { font-size: 1.8rem; margin-bottom: 0.5rem; display: block; }
+
+  .modal-upload-text {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .modal-upload-text span {
+    color: #8ec85a;
+    display: block;
+    font-size: 0.65rem;
+    margin-top: 0.3rem;
+    letter-spacing: 0.1em;
+  }
+
+  .modal-note {
+    font-size: 0.65rem;
+    color: rgba(136,136,136,0.5);
+    line-height: 1.7;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 1rem;
+  }
+
+  /* EBT section label green */
+  .ebt-section .section-label { color: #8ec85a; }
+  .ebt-section .divider { background: #8ec85a; }
+
+  /* ── CATERING ITEMS ── */
+  .catering-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.06);
+    font-size: 0.82rem;
+    color: rgba(249,244,236,0.8);
+    line-height: 1.5;
+  }
+
+  .catering-item:last-child { border-bottom: none; }
+
+  .catering-price {
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── DONATION SECTION ── */
+  .donation-section {
+    background: linear-gradient(160deg, #08060e, #100c18, #08060e);
+    position: relative;
+    overflow: hidden;
+    padding: 7rem 4rem;
+    text-align: center;
+  }
+
+  .donation-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(180,130,255,0.06), transparent 65%);
+    pointer-events: none;
+  }
+
+  .donation-section::after {
+    content: '✦';
+    position: absolute;
+    font-size: 28rem;
+    color: rgba(180,130,255,0.015);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .donation-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .donation-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(180,130,255,0.08);
+    border: 1px solid rgba(180,130,255,0.25);
+    padding: 0.45rem 1.2rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #c49dff;
+    margin-bottom: 1.5rem;
+  }
+
+  .donation-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+
+  .donation-title em {
+    font-style: italic;
+    color: #c49dff;
+  }
+
+  .donation-story {
+    font-size: 0.92rem;
+    line-height: 2;
+    color: rgba(249,244,236,0.65);
+    margin: 1.5rem auto 2.5rem;
+    max-width: 620px;
+  }
+
+  .donation-story strong {
+    color: #c49dff;
+    font-weight: 400;
+  }
+
+  /* Progress bar */
+  .donation-goal {
+    background: rgba(180,130,255,0.06);
+    border: 1px solid rgba(180,130,255,0.15);
+    padding: 2rem 2.5rem;
+    margin: 0 auto 3rem;
+    max-width: 600px;
+    text-align: left;
+  }
+
+  .donation-goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+  }
+
+  .donation-goal-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #c49dff;
+  }
+
+  .donation-goal-amounts {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .donation-goal-amounts span {
+    color: #c49dff;
+    font-size: 1.2rem;
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(180,130,255,0.12);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, #c49dff, #e8d5ff);
+    width: 0%;
+    transition: width 2s ease;
+    position: relative;
+  }
+
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 20px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.4));
+  }
+
+  .donation-goal-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.7rem;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+
+  /* Donation tiers */
+  .donation-tiers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .donation-tier {
+    background: rgba(180,130,255,0.05);
+    border: 1px solid rgba(180,130,255,0.15);
+    padding: 1.2rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+  }
+
+  .donation-tier:hover,
+  .donation-tier.selected {
+    background: rgba(180,130,255,0.12);
+    border-color: rgba(180,130,255,0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(180,130,255,0.1);
+  }
+
+  .donation-tier-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: #c49dff;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .donation-tier-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .donation-custom {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    max-width: 340px;
+    margin: 0 auto 2rem;
+    border: 1px solid rgba(180,130,255,0.2);
+  }
+
+  .donation-custom-prefix {
+    background: rgba(180,130,255,0.08);
+    border-right: 1px solid rgba(180,130,255,0.2);
+    padding: 0.9rem 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: #c49dff;
+  }
+
+  .donation-custom input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.9rem 1rem;
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    width: 100%;
+  }
+
+  .donation-custom input::placeholder { color: rgba(136,136,136,0.4); }
+
+  /* Platform buttons */
+  .donation-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-donate {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.8rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: none;
+  }
+
+  .btn-donate-primary {
+    background: #c49dff;
+    color: #08060e;
+  }
+
+  .btn-donate-primary:hover {
+    background: #d8baff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(196,157,255,0.3);
+  }
+
+  .btn-donate-outline {
+    background: transparent;
+    border: 1px solid rgba(180,130,255,0.35);
+    color: #c49dff;
+  }
+
+  .btn-donate-outline:hover {
+    border-color: #c49dff;
+    background: rgba(180,130,255,0.08);
+  }
+
+  .donation-note {
+    font-size: 0.65rem;
+    color: rgba(136,136,136,0.45);
+    line-height: 1.8;
+    margin-top: 1.5rem;
+  }
+
+  .donation-school {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(180,130,255,0.05);
+    border: 1px solid rgba(180,130,255,0.12);
+    padding: 0.8rem 1.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  .donation-school strong { color: #c49dff; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">PELUMI'S <span>Angels</span></a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#meal-prep">Meal Prep</a></li>
+    <li><a href="#catering">Catering</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#experiences">Experiences</a></li>
+    <li><a href="#private-dining">Private Dining</a></li>
+    <li><a href="#ebt" style="color:#8ec85a !important;">EBT Access</a></li>
+    <li><a href="#donate" style="color:#c49dff !important;">Support My Dream</a></li>
+    <li><a href="#private-dining" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <p class="hero-eyebrow">A Culinary Universe — Houston, Texas</p>
+  <h1 class="hero-title">Pelumi's<br><em>Angels</em></h1>
+  <p class="hero-subtitle">A Taste of Paradise — An Act of Devotion</p>
+  <div class="hero-actions">
+    <a href="#menu" class="btn-primary">Explore the Menu</a>
+    <a href="#experiences" class="btn-ghost">Book an Experience</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-strip-item">
+    <strong>50+</strong>
+    <span>Signature Dishes</span>
+  </div>
+  <div class="strip-sep"></div>
+  <div class="intro-strip-item">
+    <strong>12</strong>
+    <span>Weekly Prep Kits</span>
+  </div>
+  <div class="strip-sep"></div>
+  <div class="intro-strip-item">
+    <strong>100+</strong>
+    <span>Cooking Videos</span>
+  </div>
+  <div class="strip-sep"></div>
+  <div class="intro-strip-item">
+    <strong>∞</strong>
+    <span>Memories Made</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" style="padding: 7rem 4rem;">
+  <div class="about">
+    <div class="about-visual">
+      <div class="about-img-frame">
+        <div class="about-img-placeholder">
+          <span class="about-img-icon">🍽️</span>
+          <span class="about-img-text">Your photo here</span>
+        </div>
+      </div>
+      <div class="about-corner tl"></div>
+      <div class="about-corner br"></div>
+    </div>
+    <div class="about-text">
+      <span class="section-label">Our Story</span>
+      <h2 class="section-title">Food is <em>Love<br>Made Visible</em></h2>
+      <div class="divider"></div>
+      <p>Pelumi's Angels was born from a deep belief that food is more than sustenance — it is ceremony, memory, and connection. Every dish we create carries intention, soul, and the warmth of hands that truly care.</p>
+      <p>From our <strong>curated menu</strong> and <strong>chef-crafted meal prep kits</strong> to our <strong>immersive cooking classes</strong> and <strong>intimate private dinners</strong>, we invite you into a world where flavour meets artistry — a place where every bite is <strong>a taste of paradise</strong>.</p>
+      <p>This is not just a food business. This is <strong>Pelumi's Angels</strong> — your all-in-one culinary sanctuary.</p>
+      <a href="#experiences" class="btn-primary" style="margin-top:1rem;">Discover Experiences</a>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-header">
+    <span class="section-label">Curated Cuisine</span>
+    <h2 class="section-title">The <em>Menu</em></h2>
+    <div class="divider" style="margin: 1.5rem auto;"></div>
+    <p style="font-size:0.85rem; color:var(--text-muted); max-width:500px; margin:0 auto; line-height:1.8;">Seasonal ingredients. Soulful technique. Every plate, a taste of paradise.</p>
+  </div>
+
+  <div class="menu-categories">
+    <button class="menu-cat-btn active">All</button>
+    <button class="menu-cat-btn">Starters</button>
+    <button class="menu-cat-btn">Mains</button>
+    <button class="menu-cat-btn">Pasta</button>
+    <button class="menu-cat-btn">Seafood</button>
+    <button class="menu-cat-btn">Signatures ✦</button>
+  </div>
+
+  <div class="menu-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="menu-card">
+      <span class="menu-card-emoji">🫘</span>
+      <div class="menu-card-name">Ewagoyin & Plantain Dip</div>
+      <div class="menu-card-desc">Silky Nigerian bean stew with sweet plantains, served as a dip alongside crispy tortilla chips. A true crowd-pleaser starter.</div>
+      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🌮</span>
+      <div class="menu-card-name">Suya Tacos</div>
+      <div class="menu-card-desc">West African suya spice meets the taco — your choice of shrimp, steak, or chicken. Bold, smoky, and utterly addictive.</div>
+      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🥟</span>
+      <div class="menu-card-name">Suya Eggroll</div>
+      <div class="menu-card-desc">Crispy golden eggrolls filled with suya-spiced meat. A Nigerian-American fusion snack that disappears fast.</div>
+      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🍳</span>
+      <div class="menu-card-name">Moi Moi & Pepper Sauce</div>
+      <div class="menu-card-desc">Steamed bean pudding topped with a vibrant house pepper sauce, served on toasted brioche. Elegant comfort food at its finest.</div>
+      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🥩</span>
+      <div class="menu-card-name">Steak & Plantain Frites</div>
+      <div class="menu-card-desc">Perfectly seared steak served alongside crispy plantain frites and a vibrant red chimichurri sauce. Pure luxury on a plate.</div>
+      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+    </div>
+    <div class="menu-card" style="border-color: rgba(201,168,76,0.3);">
+      <span class="menu-card-emoji">✦</span>
+      <div class="menu-card-name" style="color:var(--gold);">Suya Pasta & Oxtail</div>
+      <div class="menu-card-desc">A signature Pelumi's Angels creation — rich oxtail ragu tossed with suya-spiced pasta. The dish that started it all.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">Signature Dish</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🫔</span>
+      <div class="menu-card-name">Lamb Shawarma</div>
+      <div class="menu-card-desc">Slow-cooked spiced lamb shawarma wrapped with beef sausage, fresh herbs, and house sauce. Hearty, fragrant, unforgettable.</div>
+      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🥘</span>
+      <div class="menu-card-name">Designer Stew</div>
+      <div class="menu-card-desc">Pelumi's signature stew — slow-simmered, deeply layered, served with fluffy rice and sweet fried plantains. The ultimate comfort meal.</div>
+      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+    </div>
+    <div class="menu-card" style="border-color: rgba(201,168,76,0.3);">
+      <span class="menu-card-emoji">✦</span>
+      <div class="menu-card-name" style="color:var(--gold);">Spicy Vodka Suya Rigatoni</div>
+      <div class="menu-card-desc">Rigatoni in a spicy vodka suya sauce crowned with pan-seared salmon. Bold, creamy, and completely one of a kind.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">Signature Dish</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🌯</span>
+      <div class="menu-card-name">Plantain & Egg Breakfast Burrito</div>
+      <div class="menu-card-desc">Sweet plantains and fluffy egg sauce wrapped in a warm burrito. A West African morning twist that works any time of day.</div>
+      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🧀</span>
+      <div class="menu-card-name">Suya Nachos</div>
+      <div class="menu-card-desc">Loaded nachos with suya-spiced meat, melted cheese, jalapeños, and house salsa. Party-ready, always a hit.</div>
+      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🐟</span>
+      <div class="menu-card-name">Peppered Grilled Tilapia</div>
+      <div class="menu-card-desc">Whole tilapia grilled to perfection, smothered in aromatic vegetable pepper sauce — served with plantains or cubed potatoes.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">✦ Chef's Pick</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🫕</span>
+      <div class="menu-card-name">Deconstructed Ewa Agoyin</div>
+      <div class="menu-card-desc">Tostones, spiced beans, fiery pepper sauce, and your choice of meat — reimagined as an elegant plated experience.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">✦ Chef's Pick</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🍲</span>
+      <div class="menu-card-name">Goat Meat Pepper Soup</div>
+      <div class="menu-card-desc">Deeply aromatic Nigerian pepper soup with tender goat meat, served with sliced French baguette for dipping. Soul-warming and bold.</div>
+      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🍗</span>
+      <div class="menu-card-name">Poulet DG</div>
+      <div class="menu-card-desc">A beloved Cameroonian classic — chicken sautéed with plantains, vegetables, and a rich tomato-herb sauce. Celebratory and fragrant.</div>
+      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+    </div>
+    <div class="menu-card" style="border-color: rgba(201,168,76,0.3);">
+      <span class="menu-card-emoji">✦</span>
+      <div class="menu-card-name" style="color:var(--gold);">Pepper Soup Ramen</div>
+      <div class="menu-card-desc">West meets East — Nigerian pepper soup broth poured over ramen noodles with goat or beef. A Pelumi's Angels original that turns heads every time.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">Signature Dish</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🥧</span>
+      <div class="menu-card-name">Oxtail & Beef Meat Pie</div>
+      <div class="menu-card-desc">Buttery, flaky pastry filled with slow-braised oxtail and beef. A Nigerian classic elevated to its most luxurious form.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">✦ Chef's Pick</span></div>
+    </div>
+    <div class="menu-card" style="border-color: rgba(201,168,76,0.3);">
+      <span class="menu-card-emoji">🦪</span>
+      <div class="menu-card-name" style="color:var(--gold);">Pepper Soup Mussels</div>
+      <div class="menu-card-desc">Daniel's special — mussels in a fragrant pepper soup broth, originally white wine and garlic butter. A show-stopping seafood experience.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">Signature Dish</span></div>
+    </div>
+  </div>
+
+  <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:2rem; letter-spacing:0.1em;">✦ denotes Pelumi's Angels Signature Dishes &nbsp;·&nbsp; Pricing available on request for curated experiences</p>
+  <div style="text-align:center; margin-top:1.5rem;">
+    <a href="#" class="btn-ghost">Enquire About This Menu</a>
+  </div>
+</section>
+
+<!-- MEAL PREP & CATERING -->
+<section id="meal-prep" style="padding: 7rem 4rem; background: var(--black);">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:4rem;">
+      <span class="section-label">Meal Prep & Catering</span>
+      <h2 class="section-title">Party Style <em>Menu</em></h2>
+      <div class="divider" style="margin:1.5rem auto;"></div>
+      <p style="font-size:0.85rem; color:var(--text-muted); max-width:560px; margin:0 auto; line-height:1.9;">Perfect for events, celebrations, and gatherings. All items are priced per quantity — contact us to discuss your headcount and we'll build a package just for you.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.5rem; margin-bottom:3rem;">
+
+      <!-- Rice & Mains -->
+      <div style="background:var(--black-mid); border:1px solid rgba(201,168,76,0.1); padding:2rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem;">🍚 Rice & Mains</div>
+        <div class="catering-item">
+          <span>Fried Rice <span style="color:var(--text-muted); font-size:0.72rem;">(shrimp, chicken, beef or liver)</span></span>
+          <span class="catering-price">$60 / big pan</span>
+        </div>
+        <div class="catering-item">
+          <span>Jollof Rice <span style="color:var(--text-muted); font-size:0.72rem;">(spicy or medium)</span></span>
+          <span class="catering-price">$50 / big pan</span>
+        </div>
+        <div class="catering-item">
+          <span>Designer Stew with Proteins</span>
+          <span class="catering-price">$60</span>
+        </div>
+        <div class="catering-item">
+          <span>Pasta <span style="color:var(--text-muted); font-size:0.72rem;">(red, rasta or vodka · proteins extra)</span></span>
+          <span class="catering-price">From $40</span>
+        </div>
+      </div>
+
+      <!-- Proteins -->
+      <div style="background:var(--black-mid); border:1px solid rgba(201,168,76,0.1); padding:2rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem;">🥩 Proteins</div>
+        <div class="catering-item">
+          <span>Spicy Stewed Beef</span>
+          <span class="catering-price">$80</span>
+        </div>
+        <div class="catering-item">
+          <span>Spicy Stewed Turkey</span>
+          <span class="catering-price">$80</span>
+        </div>
+        <div class="catering-item">
+          <span>Seared Salmon <span style="color:var(--text-muted); font-size:0.72rem;">(20 pieces)</span></span>
+          <span class="catering-price">$50</span>
+        </div>
+        <div class="catering-item">
+          <span>Beef or Shrimp Skewers <span style="color:var(--text-muted); font-size:0.72rem;">(30 pcs · protein matters)</span></span>
+          <span class="catering-price">$40</span>
+        </div>
+        <div class="catering-item">
+          <span>Wings <span style="color:var(--text-muted); font-size:0.72rem;">(3 flavors · 30 pieces)</span></span>
+          <span class="catering-price">$40</span>
+        </div>
+      </div>
+
+      <!-- Snacks & Sides -->
+      <div style="background:var(--black-mid); border:1px solid rgba(201,168,76,0.1); padding:2rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem;">🥟 Snacks & Sides</div>
+        <div class="catering-item">
+          <span>Meat Pie <span style="color:var(--text-muted); font-size:0.72rem;">(30 pieces)</span></span>
+          <span class="catering-price">$45</span>
+        </div>
+        <div class="catering-item">
+          <span>Puff Puff</span>
+          <span class="catering-price">$30</span>
+        </div>
+        <div class="catering-item">
+          <span>Samosas</span>
+          <span class="catering-price">$30</span>
+        </div>
+        <div class="catering-item">
+          <span>Suya Potstickers</span>
+          <span class="catering-price">Price on request</span>
+        </div>
+        <div class="catering-item">
+          <span>Plantains <span style="color:var(--text-muted); font-size:0.72rem;">(quantity matters)</span></span>
+          <span class="catering-price">Price on request</span>
+        </div>
+      </div>
+
+      <!-- Desserts -->
+      <div style="background:var(--black-mid); border:1px solid rgba(201,168,76,0.1); padding:2rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem;">🍰 Desserts</div>
+        <div class="catering-item">
+          <span>Cake <span style="color:var(--text-muted); font-size:0.72rem;">(heart shaped)</span></span>
+          <span class="catering-price">$30</span>
+        </div>
+        <div class="catering-item">
+          <span>Mini Cupcakes <span style="color:var(--text-muted); font-size:0.72rem;">(30 pieces)</span></span>
+          <span class="catering-price">$30</span>
+        </div>
+      </div>
+
+      <!-- Drinks -->
+      <div style="background:var(--black-mid); border:1px solid rgba(201,168,76,0.1); padding:2rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem;">🥂 Drinks</div>
+        <div class="catering-item">
+          <span>Alcoholic & Non-Alcoholic</span>
+          <span class="catering-price">Price on request</span>
+        </div>
+        <p style="font-size:0.72rem; color:var(--text-muted); line-height:1.7; margin-top:0.8rem;">We'll work with you to curate the perfect drinks pairing for your event — from mocktails to cocktails and everything in between.</p>
+      </div>
+
+      <!-- CTA Card -->
+      <div style="background:linear-gradient(135deg,#1a1208,#0f0a04); border:1px solid rgba(201,168,76,0.3); padding:2rem; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:1rem;">
+        <span style="font-size:2rem;">🥂</span>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--cream); font-weight:300;">Planning an event?</div>
+        <p style="font-size:0.75rem; color:var(--text-muted); line-height:1.8;">All prices are based on quantity. Let's talk about your headcount, your vision, and build a custom catering package for your celebration.</p>
+        <a href="#" class="btn-primary" style="margin-top:0.5rem;">Get a Custom Quote</a>
+      </div>
+
+    </div>
+
+    <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); letter-spacing:0.12em;">* All catering prices are discussed based on quantity and event size &nbsp;·&nbsp; Houston, Texas &amp; surrounding areas</p>
+  </div>
+</section>
+
+<!-- COOKING VIDEOS -->
+<section class="videos-section" id="videos">
+  <div class="videos-header">
+    <div class="lock-badge">🔒 Members Only</div>
+    <span class="section-label">The Kitchen Studio</span>
+    <h2 class="section-title">Cooking <em>Videos</em></h2>
+    <div class="divider" style="margin: 1.5rem auto;"></div>
+    <p style="font-size:0.85rem; color:var(--text-muted); max-width:500px; margin:0 auto; line-height:1.8;">Step inside Pelumi's kitchen. Over 100 professionally filmed cooking videos — from quick weeknight meals to elaborate feasts.</p>
+  </div>
+
+  <div class="videos-grid">
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="video-locked">Members Only</div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-info">
+        <div class="video-cat">Masterclass</div>
+        <div class="video-title">The Art of Perfect Jollof Rice</div>
+        <div class="video-meta">
+          <span>45 min · Intermediate</span>
+          <span class="video-price">$12</span>
+        </div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="video-locked">Members Only</div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-info">
+        <div class="video-cat">Quick Cook</div>
+        <div class="video-title">30-Minute Suya Chicken Bowl</div>
+        <div class="video-meta">
+          <span>28 min · Beginner</span>
+          <span class="video-price">$8</span>
+        </div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="video-locked">Members Only</div>
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-info">
+        <div class="video-cat">Deep Dive</div>
+        <div class="video-title">West African Soups & Stews</div>
+        <div class="video-meta">
+          <span>90 min · Advanced</span>
+          <span class="video-price">$18</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+    <a href="#" class="btn-primary">Browse All Videos</a>
+    <a href="#" class="btn-ghost">Get Full Access — $29/mo</a>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="experiences" style="padding: 7rem 4rem; background: var(--black);">
+  <div style="text-align:center; margin-bottom:1rem;">
+    <span class="section-label">Beyond the Plate</span>
+    <h2 class="section-title">Culinary <em>Experiences</em></h2>
+    <div class="divider" style="margin:1.5rem auto;"></div>
+    <p style="font-size:0.85rem; color:var(--text-muted); max-width:500px; margin:0 auto; line-height:1.8;">From hands-on cooking classes to pop-up supper clubs, every experience is designed to delight, teach, and connect.</p>
+  </div>
+  <div class="experiences-grid">
+    <div class="exp-card">
+      <div class="exp-number">01</div>
+      <span class="exp-icon">👩‍🍳</span>
+      <div class="exp-title">Cooking Classes</div>
+      <div class="exp-desc">Small group classes hosted weekly. Learn technique, flavour, and confidence in Pelumi's curated kitchen sessions. In-person and virtual options available.</div>
+      <div class="exp-price-tag">From $75 per person · Groups up to 10</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-number">02</div>
+      <span class="exp-icon">🕯️</span>
+      <div class="exp-title">Intimate Supper Club</div>
+      <div class="exp-desc">A curated dining experience for up to 12 guests. A multi-course tasting menu, intentional atmosphere, and Pelumi cooking live at your table.</div>
+      <div class="exp-price-tag">From $150 per person · Monthly dates</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-number">03</div>
+      <span class="exp-icon">🍳</span>
+      <div class="exp-title">Private Chef Dinners</div>
+      <div class="exp-desc">Pelumi comes to you. A bespoke menu designed around your preferences, dietary needs, and occasion. Perfect for anniversaries, birthdays, or simply celebrating life.</div>
+      <div class="exp-price-tag">From $250 · Custom packages available</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-number">04</div>
+      <span class="exp-icon">🥂</span>
+      <div class="exp-title">Corporate & Events</div>
+      <div class="exp-desc">Elevate your corporate event, product launch, or celebration with Pelumi's Angels catering. Full-service, luxury presentation, unforgettable flavour.</div>
+      <div class="exp-price-tag">Custom Quotes · Contact for details</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE DINING -->
+<section class="private-section" id="private-dining">
+  <div class="private-inner">
+    <span class="private-ornament">✦ ✦ ✦</span>
+    <span class="section-label" style="display:block; text-align:center;">The Inner Sanctuary</span>
+    <h2 class="section-title" style="text-align:center;">Private <em>Intimate<br>Dinners</em></h2>
+    <div class="divider" style="margin:1.5rem auto;"></div>
+    <p class="private-body">For those who seek more than a meal — Pelumi's Angels hosts a select number of private intimate dinners each month. A table for you and your closest, an atmosphere of candlelight and intention, a menu built just for the evening. This is paradise, served one course at a time.</p>
+
+    <div class="private-details">
+      <div class="private-detail">
+        <span class="private-detail-num">6–12</span>
+        <span class="private-detail-label">Guests per sitting</span>
+      </div>
+      <div class="private-detail">
+        <span class="private-detail-num">5</span>
+        <span class="private-detail-label">Course tasting menu</span>
+      </div>
+      <div class="private-detail">
+        <span class="private-detail-num">100%</span>
+        <span class="private-detail-label">Bespoke experience</span>
+      </div>
+    </div>
+
+    <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:2rem; line-height:1.8;">Dates are limited. Reserve your table early to avoid disappointment.</p>
+    <a href="#" class="btn-primary">Reserve Your Table</a>
+  </div>
+</section>
+
+<!-- EBT ACCESS -->
+<section class="ebt-section" id="ebt">
+  <div class="ebt-inner">
+    <div>
+      <div class="ebt-badge">🌿 Community Access</div>
+      <h2 class="ebt-title">EBT &amp; SNAP<br><em>Welcome Here</em></h2>
+      <div class="divider"></div>
+      <p class="ebt-body">At Pelumi's Angels, good food and culinary knowledge should never be a privilege. We proudly accept EBT/SNAP benefits and offer a dedicated discounted video library for verified cardholders — because everyone deserves to cook beautifully.</p>
+      <div class="ebt-perks">
+        <div class="ebt-perk">
+          <div class="ebt-perk-dot"></div>
+          <span>Access our full <strong>EBT Recipe Library</strong> — budget-friendly meals built around nutritious, accessible ingredients</span>
+        </div>
+        <div class="ebt-perk">
+          <div class="ebt-perk-dot"></div>
+          <span>All cooking videos priced at <strong>$5–$8</strong> for verified EBT/SNAP cardholders (standard price: $8–$18)</span>
+        </div>
+        <div class="ebt-perk">
+          <div class="ebt-perk-dot"></div>
+          <span>EBT accepted on all eligible <strong>meal prep kits</strong> containing uncooked ingredients</span>
+        </div>
+        <div class="ebt-perk">
+          <div class="ebt-perk-dot"></div>
+          <span>Verification is simple, private, and takes less than <strong>2 minutes</strong></span>
+        </div>
+      </div>
+      <button class="btn-ebt" onclick="openEbtModal()">Verify EBT Card &amp; Get Access</button>
+    </div>
+
+    <div>
+      <div style="margin-bottom:1.2rem;">
+        <span style="font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.3em; text-transform:uppercase; color:#8ec85a;">EBT Recipe Library — Preview</span>
+      </div>
+      <div class="ebt-videos" id="ebt-videos-list">
+
+        <!-- Locked overlay shown before verification -->
+        <div style="position:relative;">
+          <div class="ebt-locked-overlay" id="ebt-lock-overlay">
+            <span class="ebt-locked-msg">🔒 Verify your EBT card to unlock</span>
+          </div>
+
+          <div class="ebt-video-card">
+            <div class="ebt-play">▶</div>
+            <div class="ebt-video-info">
+              <div class="ebt-video-cat">Budget Meals</div>
+              <div class="ebt-video-title">One-Pot Rice & Beans Feast</div>
+              <div class="ebt-video-meta">22 min · Beginner · Feeds 4</div>
+            </div>
+            <div class="ebt-price-tag">$5</div>
+          </div>
+
+          <div class="ebt-video-card" style="margin-top:1rem;">
+            <div class="ebt-play">▶</div>
+            <div class="ebt-video-info">
+              <div class="ebt-video-cat">Quick & Nourishing</div>
+              <div class="ebt-video-title">Spiced Lentil Soup with Flatbread</div>
+              <div class="ebt-video-meta">18 min · Beginner · Feeds 3–4</div>
+            </div>
+            <div class="ebt-price-tag">$5</div>
+          </div>
+
+          <div class="ebt-video-card" style="margin-top:1rem;">
+            <div class="ebt-play">▶</div>
+            <div class="ebt-video-info">
+              <div class="ebt-video-cat">Family Favourite</div>
+              <div class="ebt-video-title">Nigerian-Style Vegetable Stew</div>
+              <div class="ebt-video-meta">30 min · Intermediate · Feeds 5–6</div>
+            </div>
+            <div class="ebt-price-tag">$7</div>
+          </div>
+
+          <div class="ebt-video-card" style="margin-top:1rem;">
+            <div class="ebt-play">▶</div>
+            <div class="ebt-video-info">
+              <div class="ebt-video-cat">Meal Prep</div>
+              <div class="ebt-video-title">5-Day Budget Meal Prep Plan</div>
+              <div class="ebt-video-meta">45 min · Intermediate · Feeds 2</div>
+            </div>
+            <div class="ebt-price-tag">$8</div>
+          </div>
+
+        </div>
+      </div>
+      <p style="font-size:0.65rem; color:rgba(136,136,136,0.5); margin-top:1rem; line-height:1.7;">All EBT recipe videos feature affordable, SNAP-eligible ingredients available at most Texas grocery stores.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EBT VERIFICATION MODAL -->
+<div class="modal-overlay" id="ebt-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeEbtModal()">✕</button>
+    <span class="modal-icon">🌿</span>
+    <h3 class="modal-title">EBT <em>Verification</em></h3>
+    <p class="modal-subtitle">We keep this simple, private, and secure. Upload a photo of your EBT/SNAP card (you may cover your card number — we only need to confirm the card type) and we'll unlock your discounted access within 24 hours.</p>
+
+    <div class="modal-steps">
+      <div class="modal-step">
+        <div class="modal-step-num">1</div>
+        <div class="modal-step-text"><strong>Take a photo</strong> of your EBT/Lone Star card. You may cover all numbers except the first 4 digits for privacy.</div>
+      </div>
+      <div class="modal-step">
+        <div class="modal-step-num">2</div>
+        <div class="modal-step-text"><strong>Upload it below.</strong> We accept JPG, PNG, or PDF. Your information is never shared or stored beyond verification.</div>
+      </div>
+      <div class="modal-step">
+        <div class="modal-step-num">3</div>
+        <div class="modal-step-text"><strong>We'll email you</strong> your discounted access code within 24 hours. Verification is renewed annually.</div>
+      </div>
+    </div>
+
+    <div class="modal-upload-area" onclick="triggerUpload()">
+      <span class="modal-upload-icon">📎</span>
+      <div class="modal-upload-text">
+        Click to upload your EBT card photo
+        <span>JPG · PNG · PDF · Max 5MB · Encrypted &amp; secure</span>
+      </div>
+      <input type="file" id="ebt-file-input" style="display:none;" accept=".jpg,.jpeg,.png,.pdf" onchange="handleFileSelect(this)"/>
+    </div>
+
+    <button class="btn-ebt" style="width:100%; text-align:center;" onclick="submitEbtVerification()">Submit for Verification</button>
+
+    <p class="modal-note">🔒 Your privacy matters. We only use your card image to confirm SNAP/EBT eligibility. All uploads are encrypted and deleted after verification. We will never sell or share your information. Questions? Email us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bdd8dfc9fdcdd8d1c8d0d4cedcd3dad8d1ce93ded2d0">[email&#160;protected]</a></p>
+  </div>
+</div>
+
+<!-- DONATION -->
+<section class="donation-section" id="donate">
+  <div class="donation-inner">
+    <div class="donation-badge">🎓 Help Me Grow</div>
+    <h2 class="donation-title">Support My<br><em>Culinary Dream</em></h2>
+    <div class="divider" style="margin:1.5rem auto; background:#c49dff;"></div>
+    <p class="donation-story">
+      Every dish I create, every class I teach, every meal prep kit I send out — it all comes from a place of deep love and lifelong learning. Now I'm ready to take the next step.<br><br>
+      I've been accepted to study at the <strong>Italian Chef Academy in Rome</strong> — ranked #1 in Italy by the World Association of Chef Societies. This programme will transform Pelumi's Angels from a beloved local business into something truly world-class.<br><br>
+      I can't do it alone. <strong>Every contribution brings me one step closer to that kitchen in Rome</strong> — and everything I learn there, I will pour back into every meal, every class, and every community I serve.
+    </p>
+    <div class="donation-goal">
+      <div class="donation-goal-header">
+        <span class="donation-goal-label">🇮🇹 Italian Chef Academy Fund</span>
+        <span class="donation-goal-amounts"><span id="raised-amount">$0</span> raised of $18,000</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-bar"></div>
+      </div>
+      <div class="donation-goal-footer">
+        <span id="supporter-count">0 supporters so far</span>
+        <span>Goal: $18,000 USD</span>
+      </div>
+    </div>
+    <div class="donation-tiers">
+      <div class="donation-tier" onclick="selectTier(this, 10)">
+        <span class="donation-tier-amount">$10</span>
+        <span class="donation-tier-label">A Taste of Support</span>
+      </div>
+      <div class="donation-tier" onclick="selectTier(this, 25)">
+        <span class="donation-tier-amount">$25</span>
+        <span class="donation-tier-label">Sous Chef Supporter</span>
+      </div>
+      <div class="donation-tier" onclick="selectTier(this, 50)">
+        <span class="donation-tier-amount">$50</span>
+        <span class="donation-tier-label">Head Chef Backer</span>
+      </div>
+      <div class="donation-tier" onclick="selectTier(this, 100)">
+        <span class="donation-tier-amount">$100</span>
+        <span class="donation-tier-label">Angel Investor 🖤</span>
+      </div>
+    </div>
+    <div class="donation-custom">
+      <span class="donation-custom-prefix">$</span>
+      <input type="number" id="donation-amount" placeholder="Enter your own amount" min="1"/>
+    </div>
+    <div class="donation-platforms">
+      <button class="btn-donate btn-donate-primary" onclick="donateTo('Givebutter')">🎗️ Donate via Givebutter</button>
+      <a href="#" class="btn-donate btn-donate-outline" onclick="donateTo('GoFundMe')">💛 GoFundMe</a>
+      <a href="#" class="btn-donate btn-donate-outline" onclick="donateTo('Cash App')">💚 Cash App</a>
+      <a href="#" class="btn-donate btn-donate-outline" onclick="donateTo('Venmo')">💙 Venmo</a>
+    </div>
+    <div class="donation-school">
+      🇮🇹 <span><strong>Italian Chef Academy, Rome</strong> — Ranked #1 in Italy · World Association of Chef Societies · Tuition from €2,000–€10,000</span>
+    </div>
+    <p class="donation-note">
+      Every single donor will be personally thanked. Angel Investor backers ($100+) receive a complimentary cooking class or a signed recipe card from Pelumi's kitchen. 🖤<br>
+      All donations go directly toward tuition, travel, and living costs during the programme.
+    </p>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram-section">
+  <span class="section-label">Follow Along</span>
+  <h2 class="section-title" style="margin-bottom:0.5rem;">@<em>pelumisparadise</em></h2>
+  <span class="ig-handle">Food, love, and everything in between</span>
+  <div class="ig-grid">
+    <div class="ig-cell">🥘</div>
+    <div class="ig-cell">🍗</div>
+    <div class="ig-cell">🕯️</div>
+    <div class="ig-cell">🥂</div>
+    <div class="ig-cell">🍮</div>
+    <div class="ig-cell">🫕</div>
+    <div class="ig-cell">🥗</div>
+    <div class="ig-cell">🍳</div>
+    <div class="ig-cell">🐟</div>
+    <div class="ig-cell">✨</div>
+  </div>
+  <a href="https://instagram.com/pelumisparadise" target="_blank" class="btn-ghost" style="margin-top:1.5rem; display:inline-block;">Follow on Instagram</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">PELUMI'S ANGELS</div>
+      <div class="footer-brand-tagline">A Taste of Paradise — An Act of Devotion</div>
+      <p class="footer-brand-body">Your all-in-one culinary destination. Menu, meal prep kits, cooking videos, classes, private dinners, and intimate experiences — all under one roof. A taste of paradise, always within reach.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Explore</div>
+      <ul class="footer-links">
+        <li><a href="#menu">The Menu</a></li>
+        <li><a href="#meal-prep">Meal Prep Kits</a></li>
+        <li><a href="#catering">Party Catering</a></li>
+        <li><a href="#ebt" style="color:#8ec85a;">EBT Access</a></li>
+        <li><a href="#videos">Cooking Videos</a></li>
+        <li><a href="#experiences">Experiences</a></li>
+        <li><a href="#donate" style="color:#c49dff;">Support My Dream</a></li>
+        <li><a href="#private-dining">Private Dining</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Members</div>
+      <ul class="footer-links">
+        <li><a href="#">Sign In</a></li>
+        <li><a href="#">Join Now</a></li>
+        <li><a href="#">My Account</a></li>
+        <li><a href="#">Gift a Membership</a></li>
+        <li><a href="#">Video Library</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Get in Touch</div>
+      <ul class="footer-links">
+        <li><a href="#">Book a Class</a></li>
+        <li><a href="#">Reserve a Table</a></li>
+        <li><a href="#">Corporate Enquiries</a></li>
+        <li><a href="#">Catering</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Pelumi's Angels. All rights reserved. Houston, Texas.</span>
+    <a href="https://instagram.com/pelumisparadise" class="footer-ig">@pelumisparadise</a>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Menu category filter
+  document.querySelectorAll('.menu-cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.menu-cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Add to order toast
+  function addToOrder(name, price) {
+    const toast = document.getElementById('toast');
+    toast.textContent = `✦ ${name} added — $${price}`;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
+  // Donation logic
+  let totalRaised = 0;
+  let supporters = 0;
+  const goal = 18000;
+
+  function selectTier(el, amount) {
+    document.querySelectorAll('.donation-tier').forEach(t => t.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('donation-amount').value = amount;
+  }
+
+  function donateTo(platform) {
+    const input = document.getElementById('donation-amount');
+    const amount = parseFloat(input.value);
+    if (!amount || amount < 1) {
+      const toast = document.getElementById('toast');
+      toast.textContent = '✦ Please select or enter a donation amount first';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2800);
+      return;
+    }
+    totalRaised += amount;
+    supporters += 1;
+    const pct = Math.min((totalRaised / goal) * 100, 100).toFixed(1);
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('raised-amount').textContent = '$' + totalRaised.toLocaleString();
+    document.getElementById('supporter-count').textContent = supporters + ' supporter' + (supporters > 1 ? 's' : '') + ' so far';
+    const toast = document.getElementById('toast');
+    toast.style.borderColor = '#c49dff';
+    toast.style.color = '#c49dff';
+    toast.textContent = `🎓 Thank you! Redirecting to ${platform}...`;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+      toast.style.borderColor = '';
+      toast.style.color = '';
+    }, 3000);
+    input.value = '';
+    document.querySelectorAll('.donation-tier').forEach(t => t.classList.remove('selected'));
+  }
+
+  // Animate progress bar on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          document.getElementById('progress-bar').style.width = '0%';
+        }, 300);
+      }
+    });
+  }, { threshold: 0.3 });
+  const donateSection = document.getElementById('donate');
+  if (donateSection) observer.observe(donateSection);
+
+  // EBT Modal
+  function openEbtModal() {
+    document.getElementById('ebt-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEbtModal() {
+    document.getElementById('ebt-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function triggerUpload() {
+    document.getElementById('ebt-file-input').click();
+  }
+
+  function handleFileSelect(input) {
+    if (input.files && input.files[0]) {
+      const area = input.closest('.modal-upload-area');
+      area.style.borderColor = 'rgba(120,180,80,0.8)';
+      area.style.background = 'rgba(120,180,80,0.08)';
+      area.querySelector('.modal-upload-text').innerHTML = `✅ <strong style="color:#8ec85a">${input.files[0].name}</strong> ready to upload<span>Click Submit to complete verification</span>`;
+    }
+  }
+
+  function submitEbtVerification() {
+    const toast = document.getElementById('toast');
+    toast.style.borderColor = '#8ec85a';
+    toast.style.color = '#8ec85a';
+    toast.textContent = '🌿 Submitted! You\'ll receive access within 24 hours.';
+    toast.classList.add('show');
+    closeEbtModal();
+    setTimeout(() => {
+      toast.classList.remove('show');
+      toast.style.borderColor = '';
+      toast.style.color = '';
+    }, 3500);
+  }
+
+  // Close modal on overlay click
+  document.getElementById('ebt-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeEbtModal();
+  });
+
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(8,8,8,0.97)';
+      nav.style.borderBottom = '1px solid
