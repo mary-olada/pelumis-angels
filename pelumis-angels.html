@@ -425,7 +425,7 @@
     margin-bottom: 4rem;
   }
 
-  .menu-categories { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; }
+  .menu-categories {
     display: flex;
     gap: 0.5rem;
     justify-content: center;
@@ -461,7 +461,7 @@
     margin: 0 auto;
   }
 
-  .menu-card { padding: 1.2rem !important;
+  .menu-card {
     background: var(--black-mid);
     padding: 2rem;
     border: 1px solid rgba(201,168,76,0.08);
@@ -989,51 +989,6 @@
     opacity: 0.6;
     letter-spacing: 0.15em;
     text-decoration: none;
-  }
-
-  .party-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:1.5rem; margin-bottom:3rem; }
-  @media (max-width: 768px) { .party-grid { grid-template-columns: repeat(2, 1fr); } }
-  /* ── MOBILE RESPONSIVE ── */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; flex-direction: column; gap: 0.8rem; background: rgba(8,8,8,0.98) !important; }
-    .nav-links { flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
-    .nav-links a { font-size: 0.6rem; }
-    .nav-links { flex-wrap: wrap !important; justify-content: center !important; gap: 0.5rem !important; }
-    .hero { padding: 0 1.5rem; }
-    .hero-actions { flex-direction: column; align-items: center; gap: 0.8rem; width: 100%; padding: 0 1.5rem; }
-    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
-    .intro-strip { flex-wrap: wrap; gap: 1.5rem; padding: 2rem 1.5rem; }
-    .strip-sep { display: none; }
-    section { padding: 4rem 1.5rem; }
-    .about { grid-template-columns: 1fr; gap: 2.5rem; }
-    .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-    .meal-prep { grid-template-columns: 1fr; gap: 2.5rem; }
-    .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-    .experiences-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-    .exp-card { padding: 2rem 1.5rem; }
-    .private-details { grid-template-columns: 1fr; }
-    .ebt-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .donation-tiers { grid-template-columns: repeat(2, 1fr); }
-    .donation-platforms { flex-direction: column; align-items: center; }
-    .btn-donate { width: 100%; justify-content: center; }
-    .ig-grid { grid-template-columns: repeat(3, 1fr); }
-    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
-    .modal-box { padding: 2rem 1.5rem; margin: 1rem; }
-    .section-title { font-size: clamp(2rem, 8vw, 3rem); }
-    .donation-title { font-size: clamp(2.5rem, 10vw, 4rem); }
-    .ebt-title { font-size: clamp(2rem, 8vw, 3rem); }
-  }
-  @media (min-width: 769px) and (max-width: 1024px) {
-    nav { padding: 1.2rem 2rem; }
-    section { padding: 5rem 2.5rem; }
-    .menu-grid { grid-template-columns: repeat(2, 1fr); }
-    .videos-grid { grid-template-columns: repeat(2, 1fr); }
-    .experiences-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-top { grid-template-columns: repeat(2, 1fr); }
-    .donation-tiers { grid-template-columns: repeat(2, 1fr); }
-    .ebt-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .meal-prep { grid-template-columns: 1fr; gap: 3rem; }
   }
 
   /* ── ANIMATIONS ── */
@@ -1852,7 +1807,7 @@
     <button class="menu-cat-btn">Signatures ✦</button>
   </div>
 
-  <div class="menu-grid">
+  <div class="menu-grid" style="grid-template-columns: repeat(3, 1fr);">
     <div class="menu-card">
       <span class="menu-card-emoji">🫘</span>
       <div class="menu-card-name">Ewagoyin & Plantain Dip</div>
@@ -1979,7 +1934,7 @@
       <p style="font-size:0.85rem; color:var(--text-muted); max-width:560px; margin:0 auto; line-height:1.9;">Perfect for events, celebrations, and gatherings. All items are priced per quantity — contact us to discuss your headcount and we'll build a package just for you.</p>
     </div>
 
-    <div class="party-grid">
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.5rem; margin-bottom:3rem;">
 
       <!-- Rice & Mains -->
       <div style="background:var(--black-mid); border:1px solid rgba(201,168,76,0.1); padding:2rem;">
