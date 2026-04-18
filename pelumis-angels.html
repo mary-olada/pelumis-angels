@@ -991,6 +991,223 @@
     text-decoration: none;
   }
 
+  /* ── MOBILE RESPONSIVE ── */
+  @media (max-width: 768px) {
+
+    /* NAV */
+    nav {
+      padding: 1rem 1.5rem;
+      flex-direction: column;
+      gap: 0.8rem;
+      background: rgba(8,8,8,0.98) !important;
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .nav-links a {
+      font-size: 0.6rem;
+    }
+
+    /* HERO */
+    .hero { padding: 0 1.5rem; }
+
+    .hero-title {
+      font-size: clamp(3rem, 15vw, 5rem);
+    }
+
+    .hero-subtitle {
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      width: 100%;
+      padding: 0 1.5rem;
+    }
+
+    .btn-primary, .btn-ghost {
+      width: 100%;
+      text-align: center;
+      padding: 1rem 1.5rem;
+    }
+
+    /* INTRO STRIP */
+    .intro-strip {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 2rem 1.5rem;
+    }
+
+    .strip-sep { display: none; }
+
+    /* SECTIONS */
+    section { padding: 4rem 1.5rem; }
+
+    /* ABOUT */
+    .about {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .about-img-frame { aspect-ratio: 4/3; }
+
+    /* MENU */
+    .menu-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .menu-categories {
+      gap: 0.4rem;
+    }
+
+    .menu-cat-btn {
+      font-size: 0.55rem;
+      padding: 0.4rem 0.8rem;
+      background: #080808;
+      border: 1px solid rgba(201,168,76,0.3);
+      color: #888;
+    }
+
+    .menu-cat-btn.active,
+    .menu-cat-btn:hover {
+      background: #c9a84c;
+      border-color: #c9a84c;
+      color: #080808;
+    }
+
+    /* MEAL PREP */
+    .meal-prep {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .prep-kit {
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    /* VIDEOS */
+    .videos-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    /* EXPERIENCES */
+    .experiences-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .exp-card { padding: 2rem 1.5rem; }
+
+    /* PRIVATE DINING */
+    .private-details {
+      grid-template-columns: 1fr;
+      gap: 1px;
+    }
+
+    /* EBT */
+    .ebt-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    /* DONATION */
+    .donation-tiers {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .donation-platforms {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-donate {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* INSTAGRAM */
+    .ig-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* FOOTER */
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 0.8rem;
+      text-align: center;
+    }
+
+    /* MODAL */
+    .modal-box {
+      padding: 2rem 1.5rem;
+      margin: 1rem;
+    }
+
+    /* GENERAL */
+    .section-title {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .donation-title {
+      font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .ebt-title {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .private-inner {
+      padding: 0 1rem;
+    }
+  }
+
+  /* TABLET */
+  @media (min-width: 769px) and (max-width: 1024px) {
+
+    nav { padding: 1.2rem 2rem; }
+
+    .nav-links { gap: 1.2rem; }
+
+    section { padding: 5rem 2.5rem; }
+
+    .about {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .menu-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .videos-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .experiences-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .footer-top { grid-template-columns: repeat(2, 1fr); }
+
+    .donation-tiers { grid-template-columns: repeat(2, 1fr); }
+
+    .ebt-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    .meal-prep { grid-template-columns: 1fr; gap: 3rem; }
+
+    .intro-strip { flex-wrap: wrap; gap: 2rem; }
+  }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -1704,6 +1921,458 @@
   }
 
   .donation-school strong { color: #c49dff; font-weight: 400; }
+
+  /* ── FULL MOBILE FIX ── */
+  html, body { overflow-x: hidden; max-width: 100vw; }
+
+  @media (max-width: 768px) {
+    * { box-sizing: border-box; }
+    html, body { overflow-x: hidden; max-width: 100vw; }
+    nav { padding: 1rem; flex-direction: column; gap: 0.8rem; background: rgba(8,8,8,0.98); }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+    .nav-links a { font-size: 0.58rem; }
+    section { padding: 3rem 1rem; overflow-x: hidden; }
+    .menu-section, .videos-section, .ebt-section, .donation-section, .instagram-section, .private-section { padding: 3rem 1rem; }
+    footer { padding: 3rem 1rem 1.5rem; }
+    .hero { padding: 0 1rem; }
+    .hero-title { font-size: clamp(3rem, 15vw, 5rem); }
+    .hero-subtitle { font-size: 0.85rem; text-align: center; }
+    .hero-actions { flex-direction: column; align-items: center; gap: 0.8rem; width: 100%; padding: 0 1rem; }
+    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+    .intro-strip { flex-wrap: wrap; gap: 1.5rem; padding: 2rem 1rem; overflow-x: hidden; }
+    .strip-sep { display: none; }
+    .about { grid-template-columns: 1fr; gap: 2rem; }
+    .about-img-frame { aspect-ratio: 4/3; }
+    .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .menu-card { padding: 1rem; }
+    .menu-card-name { font-size: 1rem; }
+    .menu-categories { flex-wrap: wrap; justify-content: center; gap: 0.4rem; }
+    .menu-cat-btn { background: #080808 !important; border: 1px solid rgba(201,168,76,0.3) !important; color: #888 !important; font-size: 0.55rem !important; padding: 0.4rem 0.8rem !important; }
+    .menu-cat-btn.active, .menu-cat-btn:hover { background: #c9a84c !important; border-color: #c9a84c !important; color: #080808 !important; }
+    .meal-prep { grid-template-columns: 1fr; gap: 2rem; }
+    .prep-kit { flex-wrap: wrap; gap: 0.8rem; }
+    .prep-kit-icon { width: 40px; height: 40px; }
+    .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .experiences-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .exp-card { padding: 1.5rem; }
+    .exp-number { font-size: 2rem; }
+    .exp-title { font-size: 1.2rem; }
+    .private-details { grid-template-columns: 1fr; }
+    .private-inner { padding: 0 1rem; max-width: 100%; }
+    .ebt-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .ebt-video-card { flex-wrap: wrap; gap: 0.8rem; }
+    .ebt-price-tag { margin-left: auto; }
+    .donation-inner { padding: 0; }
+    .donation-title { font-size: clamp(2rem, 10vw, 3.5rem); }
+    .donation-story { font-size: 0.82rem; }
+    .donation-goal { padding: 1.2rem; max-width: 100%; }
+    .donation-tiers { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .donation-custom { max-width: 100%; }
+    .donation-platforms { flex-direction: column; align-items: stretch; }
+    .btn-donate { width: 100%; justify-content: center; text-align: center; }
+    .donation-school { flex-wrap: wrap; text-align: center; }
+    .ig-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+    .section-title { font-size: clamp(2rem, 8vw, 3rem); }
+    .ebt-title { font-size: clamp(2rem, 8vw, 3rem); }
+    .modal-box { width: 95%; margin: 0 auto; padding: 1.5rem; }
+    .modal-steps { gap: 0.8rem; }
+    .party-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  }
+
+
+  /* ── SERVING SELECTOR ── */
+  .serving-selector {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .serving-btn {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--text-muted);
+    padding: 0.3rem 0.7rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .serving-btn.active,
+  .serving-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+  }
+  .protein-note {
+    font-size: 0.62rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    margin-top: 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding-top: 1rem;
+    font-style: italic;
+  }
+
+  /* ── FULL MENU PAGE ── */
+  #full-menu-page {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--black);
+    z-index: 200;
+    overflow-y: auto;
+    padding: 5rem 2rem 3rem;
+  }
+  #full-menu-page.open { display: block; }
+  .full-menu-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 0.6rem 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    z-index: 201;
+  }
+  .full-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+  }
+  @media (max-width: 768px) {
+    .full-menu-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ── EXPERIENCES GREYED OUT ── */
+  .exp-card.coming-soon {
+    opacity: 0.5;
+    position: relative;
+    cursor: not-allowed;
+  }
+  .coming-soon-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+  }
+  .exp-event-video {
+    margin-top: 1rem;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  /* ── PHOTO GALLERY ── */
+  .dinner-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin: 2rem auto;
+    max-width: 900px;
+  }
+  .dinner-gallery-cell {
+    aspect-ratio: 1;
+    background: var(--black-mid);
+    border: 1px solid rgba(201,168,76,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: rgba(201,168,76,0.3);
+    text-transform: uppercase;
+    overflow: hidden;
+    position: relative;
+  }
+  .dinner-gallery-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media (max-width: 768px) {
+    .dinner-gallery { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ── INSTAGRAM REDESIGN ── */
+  .ig-follow-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    border: none;
+    padding: 0.9rem 2.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    margin-top: 1.5rem;
+    display: inline-flex;
+  }
+  .ig-follow-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220,39,67,0.3);
+  }
+  .ig-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    max-width: 800px;
+    margin: 2rem auto;
+  }
+  .ig-preview-cell {
+    aspect-ratio: 1;
+    background: var(--black-mid);
+    border: 1px solid rgba(201,168,76,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .ig-preview-cell:hover { border-color: rgba(201,168,76,0.4); }
+  .ig-preview-cell .ig-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(240,148,51,0.15), rgba(188,24,136,0.15));
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+  .ig-preview-cell:hover .ig-overlay { opacity: 1; }
+  .ig-placeholder-icon { font-size: 1.5rem; opacity: 0.2; }
+  @media (max-width: 768px) {
+    .ig-preview-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ── ITALIAN DONATION BG ── */
+  .donation-italy-header {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(180deg, rgba(8,6,14,0) 0%, rgba(8,6,14,0.7) 60%, rgba(8,6,14,1) 100%),
+      url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=80') center/cover no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
+  .donation-section { padding-top: 14rem; }
+
+
+  /* ── WHATSAPP FLOAT ── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 998;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+  }
+  .testimonial-card {
+    background: var(--black-mid);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 2rem;
+    transition: all 0.4s;
+    position: relative;
+  }
+  .testimonial-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  .testimonial-stars {
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: rgba(249,244,236,0.8);
+    margin-bottom: 1.5rem;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding-top: 1rem;
+  }
+  .testimonial-avatar {
+    width: 36px;
+    height: 36px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .testimonial-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--cream);
+  }
+  .testimonial-role {
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-top: 0.2rem;
+  }
+
+  /* ── REVIEW FORM ── */
+  .review-form-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--black-mid);
+    border: 1px solid rgba(201,168,76,0.12);
+    padding: 2.5rem;
+  }
+  .review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+  .review-input {
+    background: var(--black);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--cream);
+    padding: 0.9rem 1rem;
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 0.82rem;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.3s;
+  }
+  .review-input:focus { border-color: rgba(201,168,76,0.5); }
+  .review-input::placeholder { color: var(--text-muted); }
+  .star-rating {
+    display: flex;
+    gap: 0.3rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+  .star {
+    color: rgba(201,168,76,0.25);
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .star.active { color: var(--gold); }
+
+  /* ── GIFT SECTION ── */
+  .gift-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .gift-card {
+    background: var(--black-mid);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 2rem;
+    text-align: left;
+    transition: all 0.4s;
+  }
+  .gift-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    background: #14100a;
+    transform: translateY(-3px);
+  }
+  .gift-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+  .gift-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+  }
+  .gift-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+  }
+
+  /* ── MOBILE RESPONSIVE FOR NEW SECTIONS ── */
+  @media (max-width: 768px) {
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .gift-grid { grid-template-columns: 1fr; }
+    .review-form-wrapper { padding: 1.5rem; }
+    .review-form div[style*="flex"] { flex-direction: column; }
+    .whatsapp-float { bottom: 1.5rem; left: 1rem; width: 48px; height: 48px; }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .gift-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
 </style>
 </head>
 <body>
@@ -1718,6 +2387,7 @@
     <li><a href="#videos">Videos</a></li>
     <li><a href="#experiences">Experiences</a></li>
     <li><a href="#private-dining">Private Dining</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#ebt" style="color:#8ec85a !important;">EBT Access</a></li>
     <li><a href="#donate" style="color:#c49dff !important;">Support My Dream</a></li>
     <li><a href="#private-dining" class="nav-cta">Book Now</a></li>
@@ -1807,36 +2477,61 @@
     <button class="menu-cat-btn">Signatures ✦</button>
   </div>
 
-  <div class="menu-grid" style="grid-template-columns: repeat(3, 1fr);">
+  <div class="menu-grid">
     <div class="menu-card">
       <span class="menu-card-emoji">🫘</span>
       <div class="menu-card-name">Ewagoyin & Plantain Dip</div>
       <div class="menu-card-desc">Silky Nigerian bean stew with sweet plantains, served as a dip alongside crispy tortilla chips. A true crowd-pleaser starter.</div>
-      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
     </div>
     <div class="menu-card">
       <span class="menu-card-emoji">🌮</span>
       <div class="menu-card-name">Suya Tacos</div>
       <div class="menu-card-desc">West African suya spice meets the taco — your choice of shrimp, steak, or chicken. Bold, smoky, and utterly addictive.</div>
-      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
     </div>
     <div class="menu-card">
       <span class="menu-card-emoji">🥟</span>
       <div class="menu-card-name">Suya Eggroll</div>
       <div class="menu-card-desc">Crispy golden eggrolls filled with suya-spiced meat. A Nigerian-American fusion snack that disappears fast.</div>
-      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
     </div>
     <div class="menu-card">
       <span class="menu-card-emoji">🍳</span>
       <div class="menu-card-name">Moi Moi & Pepper Sauce</div>
       <div class="menu-card-desc">Steamed bean pudding topped with a vibrant house pepper sauce, served on toasted brioche. Elegant comfort food at its finest.</div>
-      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
     </div>
     <div class="menu-card">
       <span class="menu-card-emoji">🥩</span>
       <div class="menu-card-name">Steak & Plantain Frites</div>
       <div class="menu-card-desc">Perfectly seared steak served alongside crispy plantain frites and a vibrant red chimichurri sauce. Pure luxury on a plate.</div>
-      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
     </div>
     <div class="menu-card" style="border-color: rgba(201,168,76,0.3);">
       <span class="menu-card-emoji">✦</span>
@@ -1848,13 +2543,23 @@
       <span class="menu-card-emoji">🫔</span>
       <div class="menu-card-name">Lamb Shawarma</div>
       <div class="menu-card-desc">Slow-cooked spiced lamb shawarma wrapped with beef sausage, fresh herbs, and house sauce. Hearty, fragrant, unforgettable.</div>
-      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
     </div>
     <div class="menu-card">
       <span class="menu-card-emoji">🥘</span>
       <div class="menu-card-name">Designer Stew</div>
       <div class="menu-card-desc">Pelumi's signature stew — slow-simmered, deeply layered, served with fluffy rice and sweet fried plantains. The ultimate comfort meal.</div>
-      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $50</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $50</span><button class="menu-add-btn">+</button></div>
     </div>
     <div class="menu-card" style="border-color: rgba(201,168,76,0.3);">
       <span class="menu-card-emoji">✦</span>
@@ -1866,13 +2571,23 @@
       <span class="menu-card-emoji">🌯</span>
       <div class="menu-card-name">Plantain & Egg Breakfast Burrito</div>
       <div class="menu-card-desc">Sweet plantains and fluffy egg sauce wrapped in a warm burrito. A West African morning twist that works any time of day.</div>
-      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
     </div>
     <div class="menu-card">
       <span class="menu-card-emoji">🧀</span>
       <div class="menu-card-name">Suya Nachos</div>
       <div class="menu-card-desc">Loaded nachos with suya-spiced meat, melted cheese, jalapeños, and house salsa. Party-ready, always a hit.</div>
-      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
     </div>
     <div class="menu-card">
       <span class="menu-card-emoji">🐟</span>
@@ -1890,13 +2605,23 @@
       <span class="menu-card-emoji">🍲</span>
       <div class="menu-card-name">Goat Meat Pepper Soup</div>
       <div class="menu-card-desc">Deeply aromatic Nigerian pepper soup with tender goat meat, served with sliced French baguette for dipping. Soul-warming and bold.</div>
-      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $50</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $50</span><button class="menu-add-btn">+</button></div>
     </div>
     <div class="menu-card">
       <span class="menu-card-emoji">🍗</span>
       <div class="menu-card-name">Poulet DG</div>
       <div class="menu-card-desc">A beloved Cameroonian classic — chicken sautéed with plantains, vegetables, and a rich tomato-herb sauce. Celebratory and fragrant.</div>
-      <div class="menu-card-footer"><span class="menu-price">Price on request</span></div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
     </div>
     <div class="menu-card" style="border-color: rgba(201,168,76,0.3);">
       <span class="menu-card-emoji">✦</span>
@@ -1918,9 +2643,10 @@
     </div>
   </div>
 
-  <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:2rem; letter-spacing:0.1em;">✦ denotes Pelumi's Angels Signature Dishes &nbsp;·&nbsp; Pricing available on request for curated experiences</p>
+  <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:2rem; letter-spacing:0.1em;">✦ denotes Pelumi's Angels Signature Dishes &nbsp;·&nbsp; Pricing based on serving size selections above</p>
+  <p class="protein-note">✦ If you provide your own protein, pricing can be adjusted — please enquire for details</p>
   <div style="text-align:center; margin-top:1.5rem;">
-    <a href="#" class="btn-ghost">Enquire About This Menu</a>
+    <button class="btn-ghost" onclick="document.getElementById('full-menu-page').classList.add('open'); window.scrollTo(0,0);">View Full Menu</button>
   </div>
 </section>
 
@@ -1944,7 +2670,7 @@
           <span class="catering-price">$60 / big pan</span>
         </div>
         <div class="catering-item">
-          <span>Jollof Rice <span style="color:var(--text-muted); font-size:0.72rem;">(spicy or medium)</span></span>
+          <span>Jollof Rice <span style="color:var(--text-muted); font-size:0.72rem;">(spicy or medium)</span><span style="color:var(--gold); font-size:0.72rem; display:block;">Medium Pan $60 · Large Pan upon request</span></span>
           <span class="catering-price">$50 / big pan</span>
         </div>
         <div class="catering-item">
@@ -2114,26 +2840,28 @@
     <p style="font-size:0.85rem; color:var(--text-muted); max-width:500px; margin:0 auto; line-height:1.8;">From hands-on cooking classes to pop-up supper clubs, every experience is designed to delight, teach, and connect.</p>
   </div>
   <div class="experiences-grid">
-    <div class="exp-card">
+    <div class="exp-card coming-soon">
+      <span class="coming-soon-badge">Coming Soon</span>
       <div class="exp-number">01</div>
       <span class="exp-icon">👩‍🍳</span>
       <div class="exp-title">Cooking Classes</div>
       <div class="exp-desc">Small group classes hosted weekly. Learn technique, flavour, and confidence in Pelumi's curated kitchen sessions. In-person and virtual options available.</div>
-      <div class="exp-price-tag">From $75 per person · Groups up to 10</div>
+      <div class="exp-price-tag">Adults $75 · Kids (under 18) $50 · Groups up to 10<br><span style="font-size:0.7rem; color:var(--gold);">🍷 Alcohol provided · BYOB welcome — save $5 off per person</span></div>
     </div>
-    <div class="exp-card">
+    <div class="exp-card coming-soon">
+      <span class="coming-soon-badge">Coming Soon</span>
       <div class="exp-number">02</div>
       <span class="exp-icon">🕯️</span>
       <div class="exp-title">Intimate Supper Club</div>
       <div class="exp-desc">A curated dining experience for up to 12 guests. A multi-course tasting menu, intentional atmosphere, and Pelumi cooking live at your table.</div>
-      <div class="exp-price-tag">From $150 per person · Monthly dates</div>
+      <div class="exp-price-tag">From $150 per person · Monthly dates<br><button class="btn-ghost" style="margin-top:1rem; font-size:0.55rem; padding:0.6rem 1.2rem;" onclick="openWaitlistModal()">Join the Waitlist</button></div>
     </div>
     <div class="exp-card">
       <div class="exp-number">03</div>
       <span class="exp-icon">🍳</span>
       <div class="exp-title">Private Chef Dinners</div>
       <div class="exp-desc">Pelumi comes to you. A bespoke menu designed around your preferences, dietary needs, and occasion. Perfect for anniversaries, birthdays, or simply celebrating life.</div>
-      <div class="exp-price-tag">From $250 · Custom packages available</div>
+      <div class="exp-price-tag">From $200 · Travel fee applies outside Texas<br><span style="font-size:0.7rem; color:var(--gold);">Custom packages available · Contact for bespoke pricing</span></div>
     </div>
     <div class="exp-card">
       <div class="exp-number">04</div>
@@ -2154,7 +2882,11 @@
     <div class="divider" style="margin:1.5rem auto;"></div>
     <p class="private-body">For those who seek more than a meal — Pelumi's Angels hosts a select number of private intimate dinners each month. A table for you and your closest, an atmosphere of candlelight and intention, a menu built just for the evening. This is paradise, served one course at a time.</p>
 
-    <div class="private-details">
+    <div class="private-details" style="grid-template-columns: repeat(4,1fr);">
+      <div class="private-detail">
+        <span class="private-detail-num">1–4</span>
+        <span class="private-detail-label">Intimate setting</span>
+      </div>
       <div class="private-detail">
         <span class="private-detail-num">6–12</span>
         <span class="private-detail-label">Guests per sitting</span>
@@ -2169,8 +2901,16 @@
       </div>
     </div>
 
+    <div class="dinner-gallery">
+      <div class="dinner-gallery-cell"><span>Add Photo</span></div>
+      <div class="dinner-gallery-cell"><span>Add Photo</span></div>
+      <div class="dinner-gallery-cell"><span>Add Photo</span></div>
+      <div class="dinner-gallery-cell"><span>Add Photo</span></div>
+      <div class="dinner-gallery-cell"><span>Add Photo</span></div>
+      <div class="dinner-gallery-cell"><span>Add Photo</span></div>
+    </div>
     <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:2rem; line-height:1.8;">Dates are limited. Reserve your table early to avoid disappointment.</p>
-    <a href="#" class="btn-primary">Reserve Your Table</a>
+    <a href="https://calendar.google.com/calendar/appointments/schedules/YOUR_SCHEDULE_ID" target="_blank" class="btn-primary">Reserve Your Table</a>
   </div>
 </section>
 
@@ -2302,6 +3042,7 @@
 
 <!-- DONATION -->
 <section class="donation-section" id="donate">
+  <div class="donation-italy-header"></div>
   <div class="donation-inner">
     <div class="donation-badge">🎓 Help Me Grow</div>
     <h2 class="donation-title">Support My<br><em>Culinary Dream</em></h2>
@@ -2347,10 +3088,10 @@
       <input type="number" id="donation-amount" placeholder="Enter your own amount" min="1"/>
     </div>
     <div class="donation-platforms">
-      <button class="btn-donate btn-donate-primary" onclick="donateTo('Givebutter')">🎗️ Donate via Givebutter</button>
-      <a href="#" class="btn-donate btn-donate-outline" onclick="donateTo('GoFundMe')">💛 GoFundMe</a>
-      <a href="#" class="btn-donate btn-donate-outline" onclick="donateTo('Cash App')">💚 Cash App</a>
-      <a href="#" class="btn-donate btn-donate-outline" onclick="donateTo('Venmo')">💙 Venmo</a>
+      <a href="https://givebutter.com/YOUR_CAMPAIGN" target="_blank" class="btn-donate btn-donate-primary">🎗️ Donate via Givebutter</a>
+      <a href="https://gofundme.com/YOUR_CAMPAIGN" target="_blank" class="btn-donate btn-donate-outline">💛 GoFundMe</a>
+      <a href="https://cash.app/$YOUR_CASHTAG" target="_blank" class="btn-donate btn-donate-outline">💚 Cash App</a>
+      <a href="https://venmo.com/YOUR_VENMO" target="_blank" class="btn-donate btn-donate-outline">💙 Venmo</a>
     </div>
     <div class="donation-school">
       🇮🇹 <span><strong>Italian Chef Academy, Rome</strong> — Ranked #1 in Italy · World Association of Chef Societies · Tuition from €2,000–€10,000</span>
@@ -2359,6 +3100,138 @@
       Every single donor will be personally thanked. Angel Investor backers ($100+) receive a complimentary cooking class or a signed recipe card from Pelumi's kitchen. 🖤<br>
       All donations go directly toward tuition, travel, and living costs during the programme.
     </p>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--black-soft); padding:7rem 4rem;">
+  <div style="text-align:center; margin-bottom:3rem;">
+    <span class="section-label">Kind Words</span>
+    <h2 class="section-title">What Our <em>Guests Say</em></h2>
+    <div class="divider" style="margin:1.5rem auto;"></div>
+    <p style="font-size:0.85rem; color:var(--text-muted); max-width:500px; margin:0 auto; line-height:1.8;">Real experiences from real guests — the highest honour we can receive.</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Pelumi cooked for my birthday dinner and it was honestly the most incredible meal I've ever had in someone's home. The oxtail stew had me speechless. Every single guest was asking for her contact!"</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">S</div>
+        <div>
+          <div class="testimonial-name">Sarah O.</div>
+          <div class="testimonial-role">Private Dinner Guest · Houston, TX</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"I ordered meal prep kits for the whole month and it completely changed how I eat. Everything is so beautifully portioned and the flavours are out of this world. The suya chicken alone is worth every penny."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div>
+          <div class="testimonial-name">Marcus T.</div>
+          <div class="testimonial-role">Weekly Meal Prep Client · Houston, TX</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"We hired Pelumi's Angels for our company team event and she absolutely delivered. The food was stunning, the presentation was professional, and our entire team is still talking about it weeks later."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">A</div>
+        <div>
+          <div class="testimonial-name">Aisha K.</div>
+          <div class="testimonial-role">Corporate Event · Tech Company, Houston</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEAVE A REVIEW -->
+  <div class="review-form-wrapper">
+    <h3 style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--cream); margin-bottom:0.5rem;">Share Your <em style="color:var(--gold-light);">Experience</em></h3>
+    <div class="divider" style="margin:1rem 0;"></div>
+    <div class="review-form">
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <input type="text" id="review-name" placeholder="Your Name" class="review-input"/>
+        <input type="email" id="review-email" placeholder="Your Email" class="review-input"/>
+      </div>
+      <div style="margin:0.8rem 0;">
+        <label style="font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:0.5rem;">Your Rating</label>
+        <div class="star-rating" id="star-rating">
+          <span class="star" onclick="setRating(1)">★</span>
+          <span class="star" onclick="setRating(2)">★</span>
+          <span class="star" onclick="setRating(3)">★</span>
+          <span class="star" onclick="setRating(4)">★</span>
+          <span class="star" onclick="setRating(5)">★</span>
+        </div>
+      </div>
+      <select id="review-service" class="review-input" style="width:100%; cursor:pointer;">
+        <option value="" disabled selected>Which service did you experience?</option>
+        <option>Private Chef Dinner</option>
+        <option>Meal Prep Kits</option>
+        <option>Cooking Class</option>
+        <option>Supper Club</option>
+        <option>Corporate Catering</option>
+        <option>Other</option>
+      </select>
+      <textarea id="review-text" placeholder="Tell us about your experience..." class="review-input" style="height:120px; resize:vertical;"></textarea>
+      <button class="btn-primary" onclick="submitReview()" style="width:100%; text-align:center;">Submit Review</button>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+
+<!-- NEWSLETTER -->
+<section style="background:var(--black-mid); padding:4rem; border-top:1px solid rgba(201,168,76,0.1); border-bottom:1px solid rgba(201,168,76,0.1);">
+  <div style="max-width:600px; margin:0 auto; text-align:center;">
+    <span class="section-label">Stay Connected</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:var(--cream); margin-bottom:0.5rem;">First Access to <em style="color:var(--gold-light); font-style:italic;">Everything</em></h2>
+    <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.9; margin:1rem 0 2rem;">New menus, upcoming events, class openings, exclusive recipes and behind the scenes moments — straight to your inbox. No spam, ever.</p>
+    <div style="display:flex; gap:0; max-width:480px; margin:0 auto;">
+      <input type="email" id="newsletter-email" placeholder="Your email address" style="flex:1; background:var(--black); border:1px solid rgba(201,168,76,0.25); border-right:none; color:var(--cream); padding:1rem 1.2rem; font-family:'Didact Gothic',sans-serif; font-size:0.82rem; outline:none;"/>
+      <button class="btn-primary" onclick="subscribeNewsletter()" style="white-space:nowrap; padding:1rem 1.8rem;">Subscribe</button>
+    </div>
+    <p style="font-size:0.62rem; color:rgba(136,136,136,0.4); margin-top:1rem;">Join 0+ subscribers · Unsubscribe anytime</p>
+  </div>
+</section>
+
+<!-- GIFT -->
+
+<!-- GIFT AN EXPERIENCE -->
+<section style="background:var(--black); padding:6rem 4rem; text-align:center;">
+  <div style="max-width:800px; margin:0 auto;">
+    <span class="section-label">The Perfect Gift</span>
+    <h2 class="section-title">Give the Gift of <em>Paradise</em></h2>
+    <div class="divider" style="margin:1.5rem auto;"></div>
+    <p style="font-size:0.88rem; color:rgba(249,244,236,0.65); line-height:1.9; margin-bottom:2.5rem;">A Pelumi's Angels experience is the most thoughtful gift you can give. Whether it's a private dinner for two, a cooking class with friends, or a luxury meal prep kit subscription — we'll make it unforgettable.</p>
+    <div class="gift-grid">
+      <div class="gift-card">
+        <span style="font-size:2rem; display:block; margin-bottom:1rem;">🎁</span>
+        <div class="gift-title">Gift a Private Dinner</div>
+        <div class="gift-desc">A bespoke multi-course dinner experience for your loved one. Comes with a beautifully designed digital gift card.</div>
+        <div class="gift-price">From $200</div>
+        <button class="btn-ghost" style="margin-top:1rem; width:100%;" onclick="giftEnquiry('Private Dinner')">Gift This Experience</button>
+      </div>
+      <div class="gift-card">
+        <span style="font-size:2rem; display:block; margin-bottom:1rem;">👩‍🍳</span>
+        <div class="gift-title">Gift a Cooking Class</div>
+        <div class="gift-desc">A hands-on cooking class for one or a group. Learn, laugh, and cook alongside Pelumi herself.</div>
+        <div class="gift-price">From $50</div>
+        <button class="btn-ghost" style="margin-top:1rem; width:100%;" onclick="giftEnquiry('Cooking Class')">Gift This Experience</button>
+      </div>
+      <div class="gift-card">
+        <span style="font-size:2rem; display:block; margin-bottom:1rem;">📦</span>
+        <div class="gift-title">Gift a Meal Prep Kit</div>
+        <div class="gift-desc">A month of chef-crafted meal prep kits delivered to their door. The gift that keeps on giving.</div>
+        <div class="gift-price">From $55/week</div>
+        <button class="btn-ghost" style="margin-top:1rem; width:100%;" onclick="giftEnquiry('Meal Prep Kit')">Gift This Experience</button>
+      </div>
+    </div>
+    <p style="font-size:0.72rem; color:var(--text-muted); margin-top:2rem;">All gift experiences come with a personalised digital gift card sent directly to you or the recipient. 🖤</p>
   </div>
 </section>
 
@@ -2406,21 +3279,21 @@
     <div>
       <div class="footer-col-title">Members</div>
       <ul class="footer-links">
-        <li><a href="#">Sign In</a></li>
-        <li><a href="#">Join Now</a></li>
-        <li><a href="#">My Account</a></li>
-        <li><a href="#">Gift a Membership</a></li>
-        <li><a href="#">Video Library</a></li>
+        <li><a href="#videos">Sign In</a></li>
+        <li><a href="#videos">Join Now</a></li>
+        <li><a href="#videos">My Account</a></li>
+        <li><a href="#videos">Gift a Membership</a></li>
+        <li><a href="#videos">Video Library</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Get in Touch</div>
       <ul class="footer-links">
-        <li><a href="#">Book a Class</a></li>
-        <li><a href="#">Reserve a Table</a></li>
-        <li><a href="#">Corporate Enquiries</a></li>
-        <li><a href="#">Catering</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="#experiences">Book a Class</a></li>
+        <li><a href="#private-dining">Reserve a Table</a></li>
+        <li><a href="#experiences">Corporate Enquiries</a></li>
+        <li><a href="#experiences">Catering</a></li>
+        <li><a href="mailto:hello@pelumisangels.com">Contact Us</a></li>
       </ul>
     </div>
   </div>
@@ -2433,7 +3306,128 @@
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+  // Waitlist
+  function openWaitlistModal() {
+    document.getElementById('waitlist-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeWaitlistModal() {
+    document.getElementById('waitlist-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('waitlist-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeWaitlistModal();
+  });
+  function submitWaitlist() {
+    const name = document.getElementById('waitlist-name').value;
+    const email = document.getElementById('waitlist-email').value;
+    if (!name || !email) {
+      alert('Please enter your name and email to join the waitlist.');
+      return;
+    }
+    const toast = document.getElementById('toast');
+    toast.style.borderColor = 'var(--gold)';
+    toast.style.color = 'var(--gold)';
+    toast.textContent = '✦ You are on the waitlist, ' + name + '! We will be in touch soon.';
+    toast.classList.add('show');
+    closeWaitlistModal();
+    setTimeout(() => { toast.classList.remove('show'); toast.style.borderColor = ''; toast.style.color = ''; }, 3500);
+  }
+
+  // Star rating
+  let currentRating = 0;
+  function setRating(rating) {
+    currentRating = rating;
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star, i) => {
+      star.classList.toggle('active', i < rating);
+    });
+  }
+  document.querySelectorAll('.star').forEach((star, i) => {
+    star.addEventListener('mouseover', () => {
+      document.querySelectorAll('.star').forEach((s, j) => s.classList.toggle('active', j <= i));
+    });
+    star.addEventListener('mouseout', () => {
+      document.querySelectorAll('.star').forEach((s, j) => s.classList.toggle('active', j < currentRating));
+    });
+  });
+
+  // Submit review
+  function submitReview() {
+    const name = document.getElementById('review-name').value;
+    const email = document.getElementById('review-email').value;
+    const text = document.getElementById('review-text').value;
+    const service = document.getElementById('review-service').value;
+    if (!name || !text || currentRating === 0) {
+      alert('Please fill in your name, rating and review before submitting.');
+      return;
+    }
+    const toast = document.getElementById('toast');
+    toast.style.borderColor = 'var(--gold)';
+    toast.style.color = 'var(--gold)';
+    toast.textContent = '✦ Thank you ' + name + '! Your review means the world to us.';
+    toast.classList.add('show');
+    document.getElementById('review-name').value = '';
+    document.getElementById('review-email').value = '';
+    document.getElementById('review-text').value = '';
+    document.getElementById('review-service').value = '';
+    setRating(0);
+    setTimeout(() => { toast.classList.remove('show'); toast.style.borderColor = ''; toast.style.color = ''; }, 3500);
+  }
+
+  // Newsletter
+  function subscribeNewsletter() {
+    const email = document.getElementById('newsletter-email').value;
+    if (!email) { alert('Please enter your email address.'); return; }
+    const toast = document.getElementById('toast');
+    toast.style.borderColor = 'var(--gold)';
+    toast.style.color = 'var(--gold)';
+    toast.textContent = '✦ Welcome to the Pelumi\'s Angels community!';
+    toast.classList.add('show');
+    document.getElementById('newsletter-email').value = '';
+    setTimeout(() => { toast.classList.remove('show'); toast.style.borderColor = ''; toast.style.color = ''; }, 3000);
+  }
+
+  // Gift enquiry
+  function giftEnquiry(type) {
+    window.location.href = 'mailto:hello@pelumisangels.com?subject=Gift Enquiry - ' + type + '&body=Hi Pelumi\'s Angels, I would like to gift a ' + type + ' experience.';
+  }
+
+
+</script><script>
+  // Serving selector
+  function selectServing(btn, id, price, isStew) {
+    const siblings = btn.parentElement.querySelectorAll('.serving-btn');
+    siblings.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const priceEl = document.getElementById('price-' + id);
+    if (priceEl) priceEl.textContent = '$' + price;
+  }
+
+  function addToOrderServing(name, id) {
+    const card = document.getElementById('price-' + id);
+    const price = card ? card.textContent : '';
+    const toast = document.getElementById('toast');
+    toast.textContent = '✦ ' + name + ' added — ' + price;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
+  // Full menu serving buttons
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('serving-btn')) {
+      const siblings = e.target.parentElement.querySelectorAll('.serving-btn');
+      siblings.forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      const footer = e.target.closest('.menu-card').querySelector('.menu-price');
+      if (footer && !footer.style.color) {
+        const priceText = e.target.textContent.split('·')[1].trim();
+        footer.textContent = 'From ' + priceText;
+      }
+    }
+  });
+
   // Menu category filter
   document.querySelectorAll('.menu-cat-btn').forEach(btn => {
     btn.addEventListener('click', () => {
