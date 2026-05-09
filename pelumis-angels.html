@@ -2373,30 +2373,119 @@
     .gift-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
+
+  /* ── PAGE SYSTEM ── */
+  .page { display: none; min-height: 100vh; }
+  .page.active { display: block; }
+  #page-home { display: block; }
+
+  /* Page transition */
+  .page {
+    animation: pageIn 0.4s ease forwards;
+  }
+  @keyframes pageIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Back button */
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    padding: 0.6rem 1.2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .back-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* Page header */
+  .page-header {
+    padding: 8rem 4rem 3rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    margin-bottom: 3rem;
+    background: linear-gradient(180deg, #0f0a04, var(--black));
+  }
+
+  @media (max-width: 768px) {
+    .page-header { padding: 7rem 1.5rem 2rem; }
+  }
+
+  /* Active nav link */
+  .nav-links a.nav-active { color: var(--gold); }
+
+
+  /* ── HERO FOOD PHOTO ── */
+  .hero-photo-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hero-photo-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+    filter: brightness(0.6);
+  }
+  .hero-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse 80% 60% at 50% 60%, rgba(201,168,76,0.07) 0%, transparent 70%);
+  }
+  .hero > * { position: relative; z-index: 1; }
+
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">PELUMI'S <span>Angels</span></a>
+  <a href="#" class="nav-logo" onclick="showPage('home'); return false;">PELUMI'S <span>Angels</span></a>
   <ul class="nav-links">
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#meal-prep">Meal Prep</a></li>
-    <li><a href="#catering">Catering</a></li>
-    <li><a href="#videos">Videos</a></li>
-    <li><a href="#experiences">Experiences</a></li>
-    <li><a href="#private-dining">Private Dining</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
-    <li><a href="#ebt" style="color:#8ec85a !important;">EBT Access</a></li>
-    <li><a href="#donate" style="color:#c49dff !important;">Support My Dream</a></li>
-    <li><a href="#private-dining" class="nav-cta">Book Now</a></li>
+    <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
+    <li><a href="#" onclick="showPage('menu'); return false;">Menu</a></li>
+    <li><a href="#" onclick="showPage('party'); return false;">Party Menu</a></li>
+    <li><a href="#" onclick="showPage('meal-prep'); return false;">Meal Prep</a></li>
+    <li><a href="#" onclick="showPage('videos'); return false;">Videos</a></li>
+    <li><a href="#" onclick="showPage('experiences'); return false;">Experiences</a></li>
+    <li><a href="#" onclick="showPage('private-dining'); return false;">Private Dining</a></li>
+    <li><a href="#" onclick="showPage('ebt'); return false;" style="color:#8ec85a !important;">EBT Access</a></li>
+    <li><a href="#" onclick="showPage('donate'); return false;" style="color:#c49dff !important;">Support My Dream</a></li>
+    <li><a href="#" onclick="showPage('private-dining'); return false;" class="nav-cta">Book Now</a></li>
   </ul>
 </nav>
 
+
+<div class="page active" id="page-home">
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
+  <!-- REPLACE src WITH YOUR FOOD PHOTO -->
+  <div class="hero-photo-overlay" id="hero-photo">
+    <div class="hero-photo-placeholder">
+      <span style="font-size:3rem; opacity:0.2;">📸</span>
+      <span style="font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(201,168,76,0.4); margin-top:0.5rem;">Add your food photo here</span>
+    </div>
+  </div>
   <div class="hero-line"></div>
   <p class="hero-eyebrow">A Culinary Universe — Houston, Texas</p>
   <h1 class="hero-title">Pelumi's<br><em>Angels</em></h1>
@@ -2439,10 +2528,7 @@
   <div class="about">
     <div class="about-visual">
       <div class="about-img-frame">
-        <div class="about-img-placeholder">
-          <span class="about-img-icon">🍽️</span>
-          <span class="about-img-text">Your photo here</span>
-        </div>
+        <img src="mary-photo.jpg" alt="Pelumi's Angels — Mary" style="width:100%; height:100%; object-fit:cover; object-position:center top;"/>
       </div>
       <div class="about-corner tl"></div>
       <div class="about-corner br"></div>
@@ -2454,7 +2540,7 @@
       <p>Pelumi's Angels was born from a deep belief that food is more than sustenance — it is ceremony, memory, and connection. Every dish we create carries intention, soul, and the warmth of hands that truly care.</p>
       <p>From our <strong>curated menu</strong> and <strong>chef-crafted meal prep kits</strong> to our <strong>immersive cooking classes</strong> and <strong>intimate private dinners</strong>, we invite you into a world where flavour meets artistry — a place where every bite is <strong>a taste of paradise</strong>.</p>
       <p>This is not just a food business. This is <strong>Pelumi's Angels</strong> — your all-in-one culinary sanctuary.</p>
-      <a href="#experiences" class="btn-primary" style="margin-top:1rem;">Discover Experiences</a>
+      <a href="#" class="btn-primary" style="margin-top:1rem;" onclick="showPage('experiences'); return false;">Discover Experiences</a>
     </div>
   </div>
 </section>
@@ -2646,10 +2732,346 @@
   <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:2rem; letter-spacing:0.1em;">✦ denotes Pelumi's Angels Signature Dishes &nbsp;·&nbsp; Pricing based on serving size selections above</p>
   <p class="protein-note">✦ If you provide your own protein, pricing can be adjusted — please enquire for details</p>
   <div style="text-align:center; margin-top:1.5rem;">
-    <button class="btn-ghost" onclick="document.getElementById('full-menu-page').classList.add('open'); window.scrollTo(0,0);">View Full Menu</button>
+    <button class="btn-ghost" onclick="showPage('menu'); return false;">View Full Menu</button>
   </div>
 </section>
 
+
+<!-- TESTIMONIALS ON HOME -->
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--black-soft); padding:7rem 4rem;">
+  <div style="text-align:center; margin-bottom:3rem;">
+    <span class="section-label">Kind Words</span>
+    <h2 class="section-title">What Our <em>Guests Say</em></h2>
+    <div class="divider" style="margin:1.5rem auto;"></div>
+    <p style="font-size:0.85rem; color:var(--text-muted); max-width:500px; margin:0 auto; line-height:1.8;">Real experiences from real guests — the highest honour we can receive.</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Pelumi cooked for my birthday dinner and it was honestly the most incredible meal I've ever had in someone's home. The oxtail stew had me speechless. Every single guest was asking for her contact!"</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">S</div>
+        <div>
+          <div class="testimonial-name">Sarah O.</div>
+          <div class="testimonial-role">Private Dinner Guest · Houston, TX</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"I ordered meal prep kits for the whole month and it completely changed how I eat. Everything is so beautifully portioned and the flavours are out of this world. The suya chicken alone is worth every penny."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div>
+          <div class="testimonial-name">Marcus T.</div>
+          <div class="testimonial-role">Weekly Meal Prep Client · Houston, TX</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"We hired Pelumi's Angels for our company team event and she absolutely delivered. The food was stunning, the presentation was professional, and our entire team is still talking about it weeks later."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">A</div>
+        <div>
+          <div class="testimonial-name">Aisha K.</div>
+          <div class="testimonial-role">Corporate Event · Tech Company, Houston</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEAVE A REVIEW -->
+  <div class="review-form-wrapper">
+    <h3 style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--cream); margin-bottom:0.5rem;">Share Your <em style="color:var(--gold-light);">Experience</em></h3>
+    <div class="divider" style="margin:1rem 0;"></div>
+    <div class="review-form">
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <input type="text" id="review-name" placeholder="Your Name" class="review-input"/>
+        <input type="email" id="review-email" placeholder="Your Email" class="review-input"/>
+      </div>
+      <div style="margin:0.8rem 0;">
+        <label style="font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:0.5rem;">Your Rating</label>
+        <div class="star-rating" id="star-rating">
+          <span class="star" onclick="setRating(1)">★</span>
+          <span class="star" onclick="setRating(2)">★</span>
+          <span class="star" onclick="setRating(3)">★</span>
+          <span class="star" onclick="setRating(4)">★</span>
+          <span class="star" onclick="setRating(5)">★</span>
+        </div>
+      </div>
+      <select id="review-service" class="review-input" style="width:100%; cursor:pointer;">
+        <option value="" disabled selected>Which service did you experience?</option>
+        <option>Private Chef Dinner</option>
+        <option>Meal Prep Kits</option>
+        <option>Cooking Class</option>
+        <option>Supper Club</option>
+        <option>Corporate Catering</option>
+        <option>Other</option>
+      </select>
+      <textarea id="review-text" placeholder="Tell us about your experience..." class="review-input" style="height:120px; resize:vertical;"></textarea>
+      <button class="btn-primary" onclick="submitReview()" style="width:100%; text-align:center;">Submit Review</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- NEWSLETTER ON HOME -->
+<!-- NEWSLETTER -->
+
+<!-- NEWSLETTER -->
+<section style="background:var(--black-mid); padding:4rem; border-top:1px solid rgba(201,168,76,0.1); border-bottom:1px solid rgba(201,168,76,0.1);">
+  <div style="max-width:600px; margin:0 auto; text-align:center;">
+    <span class="section-label">Stay Connected</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:var(--cream); margin-bottom:0.5rem;">First Access to <em style="color:var(--gold-light); font-style:italic;">Everything</em></h2>
+    <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.9; margin:1rem 0 2rem;">New menus, upcoming events, class openings, exclusive recipes and behind the scenes moments — straight to your inbox. No spam, ever.</p>
+    <div style="display:flex; gap:0; max-width:480px; margin:0 auto;">
+      <input type="email" id="newsletter-email" placeholder="Your email address" style="flex:1; background:var(--black); border:1px solid rgba(201,168,76,0.25); border-right:none; color:var(--cream); padding:1rem 1.2rem; font-family:'Didact Gothic',sans-serif; font-size:0.82rem; outline:none;"/>
+      <button class="btn-primary" onclick="subscribeNewsletter()" style="white-space:nowrap; padding:1rem 1.8rem;">Subscribe</button>
+    </div>
+    <p style="font-size:0.62rem; color:rgba(136,136,136,0.4); margin-top:1rem;">Join 0+ subscribers · Unsubscribe anytime</p>
+  </div>
+</section>
+
+<!-- GIFT -->
+
+
+<!-- INSTAGRAM ON HOME -->
+<!-- INSTAGRAM -->
+<section class="instagram-section">
+  <span class="section-label">Follow Along</span>
+  <h2 class="section-title" style="margin-bottom:0.5rem;">@<em>pelumisparadise</em></h2>
+  <span class="ig-handle">Food, love, and everything in between</span>
+  <div class="ig-grid">
+    <div class="ig-cell">🥘</div>
+    <div class="ig-cell">🍗</div>
+    <div class="ig-cell">🕯️</div>
+    <div class="ig-cell">🥂</div>
+    <div class="ig-cell">🍮</div>
+    <div class="ig-cell">🫕</div>
+    <div class="ig-cell">🥗</div>
+    <div class="ig-cell">🍳</div>
+    <div class="ig-cell">🐟</div>
+    <div class="ig-cell">✨</div>
+  </div>
+  <a href="https://instagram.com/pelumisparadise" target="_blank" class="btn-ghost" style="margin-top:1.5rem; display:inline-block;">Follow on Instagram</a>
+</section>
+
+
+</div><!-- end page-home -->
+
+<div class="page" id="page-menu">
+<div class="page-header">
+  <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+  <span class="section-label">Curated Cuisine</span>
+  <h1 class="section-title">The <em>Menu</em></h1>
+  <div class="divider" style="margin:1.5rem auto;"></div>
+  <p style="font-size:0.85rem; color:var(--text-muted); max-width:500px; margin:0 auto; line-height:1.8;">Every dish crafted with intention. A taste of paradise on every plate.</p>
+</div>
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-header">
+    <span class="section-label">Curated Cuisine</span>
+    <h2 class="section-title">The <em>Menu</em></h2>
+    <div class="divider" style="margin: 1.5rem auto;"></div>
+    <p style="font-size:0.85rem; color:var(--text-muted); max-width:500px; margin:0 auto; line-height:1.8;">Seasonal ingredients. Soulful technique. Every plate, a taste of paradise.</p>
+  </div>
+
+  <div class="menu-categories">
+    <button class="menu-cat-btn active">All</button>
+    <button class="menu-cat-btn">Starters</button>
+    <button class="menu-cat-btn">Mains</button>
+    <button class="menu-cat-btn">Pasta</button>
+    <button class="menu-cat-btn">Seafood</button>
+    <button class="menu-cat-btn">Signatures ✦</button>
+  </div>
+
+  <div class="menu-grid">
+    <div class="menu-card">
+      <span class="menu-card-emoji">🫘</span>
+      <div class="menu-card-name">Ewagoyin & Plantain Dip</div>
+      <div class="menu-card-desc">Silky Nigerian bean stew with sweet plantains, served as a dip alongside crispy tortilla chips. A true crowd-pleaser starter.</div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🌮</span>
+      <div class="menu-card-name">Suya Tacos</div>
+      <div class="menu-card-desc">West African suya spice meets the taco — your choice of shrimp, steak, or chicken. Bold, smoky, and utterly addictive.</div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🥟</span>
+      <div class="menu-card-name">Suya Eggroll</div>
+      <div class="menu-card-desc">Crispy golden eggrolls filled with suya-spiced meat. A Nigerian-American fusion snack that disappears fast.</div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🍳</span>
+      <div class="menu-card-name">Moi Moi & Pepper Sauce</div>
+      <div class="menu-card-desc">Steamed bean pudding topped with a vibrant house pepper sauce, served on toasted brioche. Elegant comfort food at its finest.</div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🥩</span>
+      <div class="menu-card-name">Steak & Plantain Frites</div>
+      <div class="menu-card-desc">Perfectly seared steak served alongside crispy plantain frites and a vibrant red chimichurri sauce. Pure luxury on a plate.</div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
+    </div>
+    <div class="menu-card" style="border-color: rgba(201,168,76,0.3);">
+      <span class="menu-card-emoji">✦</span>
+      <div class="menu-card-name" style="color:var(--gold);">Suya Pasta & Oxtail</div>
+      <div class="menu-card-desc">A signature Pelumi's Angels creation — rich oxtail ragu tossed with suya-spiced pasta. The dish that started it all.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">Signature Dish</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🫔</span>
+      <div class="menu-card-name">Lamb Shawarma</div>
+      <div class="menu-card-desc">Slow-cooked spiced lamb shawarma wrapped with beef sausage, fresh herbs, and house sauce. Hearty, fragrant, unforgettable.</div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🥘</span>
+      <div class="menu-card-name">Designer Stew</div>
+      <div class="menu-card-desc">Pelumi's signature stew — slow-simmered, deeply layered, served with fluffy rice and sweet fried plantains. The ultimate comfort meal.</div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $50</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $50</span><button class="menu-add-btn">+</button></div>
+    </div>
+    <div class="menu-card" style="border-color: rgba(201,168,76,0.3);">
+      <span class="menu-card-emoji">✦</span>
+      <div class="menu-card-name" style="color:var(--gold);">Spicy Vodka Suya Rigatoni</div>
+      <div class="menu-card-desc">Rigatoni in a spicy vodka suya sauce crowned with pan-seared salmon. Bold, creamy, and completely one of a kind.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">Signature Dish</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🌯</span>
+      <div class="menu-card-name">Plantain & Egg Breakfast Burrito</div>
+      <div class="menu-card-desc">Sweet plantains and fluffy egg sauce wrapped in a warm burrito. A West African morning twist that works any time of day.</div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🧀</span>
+      <div class="menu-card-name">Suya Nachos</div>
+      <div class="menu-card-desc">Loaded nachos with suya-spiced meat, melted cheese, jalapeños, and house salsa. Party-ready, always a hit.</div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🐟</span>
+      <div class="menu-card-name">Peppered Grilled Tilapia</div>
+      <div class="menu-card-desc">Whole tilapia grilled to perfection, smothered in aromatic vegetable pepper sauce — served with plantains or cubed potatoes.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">✦ Chef's Pick</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🫕</span>
+      <div class="menu-card-name">Deconstructed Ewa Agoyin</div>
+      <div class="menu-card-desc">Tostones, spiced beans, fiery pepper sauce, and your choice of meat — reimagined as an elegant plated experience.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">✦ Chef's Pick</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🍲</span>
+      <div class="menu-card-name">Goat Meat Pepper Soup</div>
+      <div class="menu-card-desc">Deeply aromatic Nigerian pepper soup with tender goat meat, served with sliced French baguette for dipping. Soul-warming and bold.</div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $50</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $50</span><button class="menu-add-btn">+</button></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🍗</span>
+      <div class="menu-card-name">Poulet DG</div>
+      <div class="menu-card-desc">A beloved Cameroonian classic — chicken sautéed with plantains, vegetables, and a rich tomato-herb sauce. Celebratory and fragrant.</div>
+      <div class="serving-selector">
+          <button class="serving-btn active">1–2 · $35</button>
+          <button class="serving-btn">3–5 · $70</button>
+          <button class="serving-btn">6–10 · $140+</button>
+        </div>
+        <div class="menu-card-footer"><span class="menu-price">From $35</span><button class="menu-add-btn">+</button></div>
+    </div>
+    <div class="menu-card" style="border-color: rgba(201,168,76,0.3);">
+      <span class="menu-card-emoji">✦</span>
+      <div class="menu-card-name" style="color:var(--gold);">Pepper Soup Ramen</div>
+      <div class="menu-card-desc">West meets East — Nigerian pepper soup broth poured over ramen noodles with goat or beef. A Pelumi's Angels original that turns heads every time.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">Signature Dish</span></div>
+    </div>
+    <div class="menu-card">
+      <span class="menu-card-emoji">🥧</span>
+      <div class="menu-card-name">Oxtail & Beef Meat Pie</div>
+      <div class="menu-card-desc">Buttery, flaky pastry filled with slow-braised oxtail and beef. A Nigerian classic elevated to its most luxurious form.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">✦ Chef's Pick</span></div>
+    </div>
+    <div class="menu-card" style="border-color: rgba(201,168,76,0.3);">
+      <span class="menu-card-emoji">🦪</span>
+      <div class="menu-card-name" style="color:var(--gold);">Pepper Soup Mussels</div>
+      <div class="menu-card-desc">Daniel's special — mussels in a fragrant pepper soup broth, originally white wine and garlic butter. A show-stopping seafood experience.</div>
+      <div class="menu-card-footer"><span class="menu-price" style="color:var(--gold);">Signature Dish</span></div>
+    </div>
+  </div>
+
+  <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:2rem; letter-spacing:0.1em;">✦ denotes Pelumi's Angels Signature Dishes &nbsp;·&nbsp; Pricing based on serving size selections above</p>
+  <p class="protein-note">✦ If you provide your own protein, pricing can be adjusted — please enquire for details</p>
+  <div style="text-align:center; margin-top:1.5rem;">
+    <button class="btn-ghost" onclick="showPage('menu'); return false;">View Full Menu</button>
+  </div>
+</section>
+
+
+</div><!-- end page-menu -->
+
+<div class="page" id="page-party">
+<div class="page-header">
+  <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+  <span class="section-label">Party & Events</span>
+  <h1 class="section-title">Party Style <em>Menu</em></h1>
+  <div class="divider" style="margin:1.5rem auto;"></div>
+  <p style="font-size:0.85rem; color:var(--text-muted); max-width:500px; margin:0 auto; line-height:1.8;">Perfect for celebrations, events and gatherings. Enquire for custom packages.</p>
+</div>
 <!-- MEAL PREP & CATERING -->
 <section id="meal-prep" style="padding: 7rem 4rem; background: var(--black);">
   <div style="max-width:1200px; margin:0 auto;">
@@ -2770,6 +3192,16 @@
   </div>
 </section>
 
+
+</div><!-- end page-party -->
+
+<div class="page" id="page-videos">
+<div class="page-header">
+  <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+  <span class="section-label">The Kitchen Studio</span>
+  <h1 class="section-title">Cooking <em>Videos</em></h1>
+  <div class="divider" style="margin:1.5rem auto;"></div>
+</div>
 <!-- COOKING VIDEOS -->
 <section class="videos-section" id="videos">
   <div class="videos-header">
@@ -2831,6 +3263,16 @@
   </div>
 </section>
 
+
+</div><!-- end page-videos -->
+
+<div class="page" id="page-experiences">
+<div class="page-header">
+  <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+  <span class="section-label">Beyond the Plate</span>
+  <h1 class="section-title">Culinary <em>Experiences</em></h1>
+  <div class="divider" style="margin:1.5rem auto;"></div>
+</div>
 <!-- EXPERIENCES -->
 <section id="experiences" style="padding: 7rem 4rem; background: var(--black);">
   <div style="text-align:center; margin-bottom:1rem;">
@@ -2873,6 +3315,16 @@
   </div>
 </section>
 
+
+</div><!-- end page-experiences -->
+
+<div class="page" id="page-private-dining">
+<div class="page-header">
+  <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+  <span class="section-label">The Inner Sanctuary</span>
+  <h1 class="section-title">Private <em>Intimate Dinners</em></h1>
+  <div class="divider" style="margin:1.5rem auto;"></div>
+</div>
 <!-- PRIVATE DINING -->
 <section class="private-section" id="private-dining">
   <div class="private-inner">
@@ -2910,10 +3362,20 @@
       <div class="dinner-gallery-cell"><span>Add Photo</span></div>
     </div>
     <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:2rem; line-height:1.8;">Dates are limited. Reserve your table early to avoid disappointment.</p>
-    <a href="https://calendar.google.com/calendar/appointments/schedules/YOUR_SCHEDULE_ID" target="_blank" class="btn-primary">Reserve Your Table</a>
+    <a href="https://calendar.google.com/calendar/appointments/schedules/YOUR_SCHEDULE_ID" target="_blank" class="btn-primary" onclick="showPage('private-dining')">Reserve Your Table</a>
   </div>
 </section>
 
+
+</div><!-- end page-private-dining -->
+
+<div class="page" id="page-ebt">
+<div class="page-header">
+  <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+  <span class="section-label" style="color:#8ec85a;">Community Access</span>
+  <h1 class="section-title">EBT & SNAP <em style="color:#8ec85a;">Welcome Here</em></h1>
+  <div class="divider" style="margin:1.5rem auto; background:#8ec85a;"></div>
+</div>
 <!-- EBT ACCESS -->
 <section class="ebt-section" id="ebt">
   <div class="ebt-inner">
@@ -3040,6 +3502,10 @@
   </div>
 </div>
 
+
+</div><!-- end page-ebt -->
+
+<div class="page" id="page-donate">
 <!-- DONATION -->
 <section class="donation-section" id="donate">
   <div class="donation-italy-header"></div>
@@ -3104,103 +3570,16 @@
 </section>
 
 
-<!-- TESTIMONIALS -->
-<section id="testimonials" style="background:var(--black-soft); padding:7rem 4rem;">
-  <div style="text-align:center; margin-bottom:3rem;">
-    <span class="section-label">Kind Words</span>
-    <h2 class="section-title">What Our <em>Guests Say</em></h2>
-    <div class="divider" style="margin:1.5rem auto;"></div>
-    <p style="font-size:0.85rem; color:var(--text-muted); max-width:500px; margin:0 auto; line-height:1.8;">Real experiences from real guests — the highest honour we can receive.</p>
-  </div>
 
-  <div class="testimonials-grid">
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">"Pelumi cooked for my birthday dinner and it was honestly the most incredible meal I've ever had in someone's home. The oxtail stew had me speechless. Every single guest was asking for her contact!"</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">S</div>
-        <div>
-          <div class="testimonial-name">Sarah O.</div>
-          <div class="testimonial-role">Private Dinner Guest · Houston, TX</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">"I ordered meal prep kits for the whole month and it completely changed how I eat. Everything is so beautifully portioned and the flavours are out of this world. The suya chicken alone is worth every penny."</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">M</div>
-        <div>
-          <div class="testimonial-name">Marcus T.</div>
-          <div class="testimonial-role">Weekly Meal Prep Client · Houston, TX</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">"We hired Pelumi's Angels for our company team event and she absolutely delivered. The food was stunning, the presentation was professional, and our entire team is still talking about it weeks later."</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">A</div>
-        <div>
-          <div class="testimonial-name">Aisha K.</div>
-          <div class="testimonial-role">Corporate Event · Tech Company, Houston</div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div><!-- end page-donate -->
 
-  <!-- LEAVE A REVIEW -->
-  <div class="review-form-wrapper">
-    <h3 style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--cream); margin-bottom:0.5rem;">Share Your <em style="color:var(--gold-light);">Experience</em></h3>
-    <div class="divider" style="margin:1rem 0;"></div>
-    <div class="review-form">
-      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-        <input type="text" id="review-name" placeholder="Your Name" class="review-input"/>
-        <input type="email" id="review-email" placeholder="Your Email" class="review-input"/>
-      </div>
-      <div style="margin:0.8rem 0;">
-        <label style="font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:0.5rem;">Your Rating</label>
-        <div class="star-rating" id="star-rating">
-          <span class="star" onclick="setRating(1)">★</span>
-          <span class="star" onclick="setRating(2)">★</span>
-          <span class="star" onclick="setRating(3)">★</span>
-          <span class="star" onclick="setRating(4)">★</span>
-          <span class="star" onclick="setRating(5)">★</span>
-        </div>
-      </div>
-      <select id="review-service" class="review-input" style="width:100%; cursor:pointer;">
-        <option value="" disabled selected>Which service did you experience?</option>
-        <option>Private Chef Dinner</option>
-        <option>Meal Prep Kits</option>
-        <option>Cooking Class</option>
-        <option>Supper Club</option>
-        <option>Corporate Catering</option>
-        <option>Other</option>
-      </select>
-      <textarea id="review-text" placeholder="Tell us about your experience..." class="review-input" style="height:120px; resize:vertical;"></textarea>
-      <button class="btn-primary" onclick="submitReview()" style="width:100%; text-align:center;">Submit Review</button>
-    </div>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-
-<!-- NEWSLETTER -->
-<section style="background:var(--black-mid); padding:4rem; border-top:1px solid rgba(201,168,76,0.1); border-bottom:1px solid rgba(201,168,76,0.1);">
-  <div style="max-width:600px; margin:0 auto; text-align:center;">
-    <span class="section-label">Stay Connected</span>
-    <h2 style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:var(--cream); margin-bottom:0.5rem;">First Access to <em style="color:var(--gold-light); font-style:italic;">Everything</em></h2>
-    <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.9; margin:1rem 0 2rem;">New menus, upcoming events, class openings, exclusive recipes and behind the scenes moments — straight to your inbox. No spam, ever.</p>
-    <div style="display:flex; gap:0; max-width:480px; margin:0 auto;">
-      <input type="email" id="newsletter-email" placeholder="Your email address" style="flex:1; background:var(--black); border:1px solid rgba(201,168,76,0.25); border-right:none; color:var(--cream); padding:1rem 1.2rem; font-family:'Didact Gothic',sans-serif; font-size:0.82rem; outline:none;"/>
-      <button class="btn-primary" onclick="subscribeNewsletter()" style="white-space:nowrap; padding:1rem 1.8rem;">Subscribe</button>
-    </div>
-    <p style="font-size:0.62rem; color:rgba(136,136,136,0.4); margin-top:1rem;">Join 0+ subscribers · Unsubscribe anytime</p>
-  </div>
-</section>
-
-<!-- GIFT -->
-
+<div class="page" id="page-gift">
+<div class="page-header">
+  <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+  <span class="section-label">The Perfect Gift</span>
+  <h1 class="section-title">Gift an <em>Experience</em></h1>
+  <div class="divider" style="margin:1.5rem auto;"></div>
+</div>
 <!-- GIFT AN EXPERIENCE -->
 <section style="background:var(--black); padding:6rem 4rem; text-align:center;">
   <div style="max-width:800px; margin:0 auto;">
@@ -3235,25 +3614,21 @@
   </div>
 </section>
 
-<!-- INSTAGRAM -->
-<section class="instagram-section">
-  <span class="section-label">Follow Along</span>
-  <h2 class="section-title" style="margin-bottom:0.5rem;">@<em>pelumisparadise</em></h2>
-  <span class="ig-handle">Food, love, and everything in between</span>
-  <div class="ig-grid">
-    <div class="ig-cell">🥘</div>
-    <div class="ig-cell">🍗</div>
-    <div class="ig-cell">🕯️</div>
-    <div class="ig-cell">🥂</div>
-    <div class="ig-cell">🍮</div>
-    <div class="ig-cell">🫕</div>
-    <div class="ig-cell">🥗</div>
-    <div class="ig-cell">🍳</div>
-    <div class="ig-cell">🐟</div>
-    <div class="ig-cell">✨</div>
-  </div>
-  <a href="https://instagram.com/pelumisparadise" target="_blank" class="btn-ghost" style="margin-top:1.5rem; display:inline-block;">Follow on Instagram</a>
+
+</div><!-- end page-gift -->
+
+<div class="page" id="page-meal-prep">
+<div class="page-header">
+  <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+  <span class="section-label">Weekly Kits</span>
+  <h1 class="section-title">Meal Prep <em>Delivered</em></h1>
+  <div class="divider" style="margin:1.5rem auto;"></div>
+</div>
+<section style="padding:4rem; max-width:1200px; margin:0 auto;">
+  <p style="text-align:center; color:var(--text-muted); font-size:0.85rem;">Meal prep kits coming soon — contact us to pre-order your weekly kit.</p>
 </section>
+
+</div><!-- end page-meal-prep -->
 
 <!-- FOOTER -->
 <footer>
@@ -3266,33 +3641,33 @@
     <div>
       <div class="footer-col-title">Explore</div>
       <ul class="footer-links">
-        <li><a href="#menu">The Menu</a></li>
-        <li><a href="#meal-prep">Meal Prep Kits</a></li>
+        <li><a href="#" onclick="showPage('menu'); return false;">The Menu</a></li>
+        <li><a href="#" onclick="showPage('meal-prep'); return false;">Meal Prep Kits</a></li>
         <li><a href="#catering">Party Catering</a></li>
-        <li><a href="#ebt" style="color:#8ec85a;">EBT Access</a></li>
-        <li><a href="#videos">Cooking Videos</a></li>
-        <li><a href="#experiences">Experiences</a></li>
-        <li><a href="#donate" style="color:#c49dff;">Support My Dream</a></li>
-        <li><a href="#private-dining">Private Dining</a></li>
+        <li><a href="#" onclick="showPage('ebt'); return false;" style="color:#8ec85a;">EBT Access</a></li>
+        <li><a href="#" onclick="showPage('videos'); return false;">Cooking Videos</a></li>
+        <li><a href="#" onclick="showPage('experiences'); return false;">Experiences</a></li>
+        <li><a href="#" onclick="showPage('donate'); return false;" style="color:#c49dff;">Support My Dream</a></li>
+        <li><a href="#" onclick="showPage('private-dining'); return false;">Private Dining</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Members</div>
       <ul class="footer-links">
-        <li><a href="#videos">Sign In</a></li>
-        <li><a href="#videos">Join Now</a></li>
-        <li><a href="#videos">My Account</a></li>
-        <li><a href="#videos">Gift a Membership</a></li>
-        <li><a href="#videos">Video Library</a></li>
+        <li><a href="#" onclick="showPage('videos'); return false;">Sign In</a></li>
+        <li><a href="#" onclick="showPage('videos'); return false;">Join Now</a></li>
+        <li><a href="#" onclick="showPage('videos'); return false;">My Account</a></li>
+        <li><a href="#" onclick="showPage('gift'); return false;">Gift a Membership</a></li>
+        <li><a href="#" onclick="showPage('videos'); return false;">Video Library</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Get in Touch</div>
       <ul class="footer-links">
-        <li><a href="#experiences">Book a Class</a></li>
-        <li><a href="#private-dining">Reserve a Table</a></li>
-        <li><a href="#experiences">Corporate Enquiries</a></li>
-        <li><a href="#experiences">Catering</a></li>
+        <li><a href="#" onclick="showPage('experiences'); return false;">Book a Class</a></li>
+        <li><a href="#" onclick="showPage('private-dining'); return false;">Reserve a Table</a></li>
+        <li><a href="#" onclick="showPage('experiences'); return false;">Corporate Enquiries</a></li>
+        <li><a href="#" onclick="showPage('experiences'); return false;">Catering</a></li>
         <li><a href="mailto:hello@pelumisangels.com">Contact Us</a></li>
       </ul>
     </div>
@@ -3302,6 +3677,7 @@
     <a href="https://instagram.com/pelumisparadise" class="footer-ig">@pelumisparadise</a>
   </div>
 </footer>
+
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
@@ -3393,6 +3769,62 @@
   function giftEnquiry(type) {
     window.location.href = 'mailto:hello@pelumisangels.com?subject=Gift Enquiry - ' + type + '&body=Hi Pelumi\'s Angels, I would like to gift a ' + type + ' experience.';
   }
+
+
+
+  // ── PAGE SWITCHING SYSTEM ──
+  function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => {
+      p.classList.remove('active');
+    });
+
+    // Show requested page
+    const target = document.getElementById('page-' + pageId);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Update nav active state
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.remove('nav-active');
+    });
+
+    // Store current page
+    localStorage.setItem('currentPage', pageId);
+  }
+
+  // Handle browser back button
+  window.addEventListener('popstate', function(e) {
+    if (e.state && e.state.page) {
+      showPage(e.state.page);
+    }
+  });
+
+  // Load page from URL hash on page load
+  window.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById('page-' + hash)) {
+      showPage(hash);
+    }
+  });
+
+  // Update hero buttons to use page switching
+  document.addEventListener('DOMContentLoaded', function() {
+    // Fix explore menu button
+    const exploreBtn = document.querySelector('.hero-actions .btn-primary');
+    if (exploreBtn) {
+      exploreBtn.href = '#';
+      exploreBtn.onclick = function() { showPage('menu'); return false; };
+    }
+    // Fix book experience button
+    const bookBtn = document.querySelector('.hero-actions .btn-ghost');
+    if (bookBtn) {
+      bookBtn.href = '#';
+      bookBtn.onclick = function() { showPage('experiences'); return false; };
+    }
+  });
 
 
 </script><script>
