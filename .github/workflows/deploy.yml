@@ -16,6 +16,8 @@ jobs:
   deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,14 +29,6 @@ jobs:
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
-
-      - name: Create Artifact Registry repository
-        run: |
-          gcloud artifacts repositories create pelumis-angels \
-            --repository-format=docker \
-            --location=us-central1 \
-            --project=pelumis-angels-site \
-            --quiet || true
 
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
