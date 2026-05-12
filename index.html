@@ -1127,6 +1127,7 @@ function submitReview() {
 function subscribeNewsletter() {
   var email = document.getElementById('newsletter-email').value;
   if (!email) { alert('Please enter your email.'); return; }
+  window.location.href = 'mailto:hello@pelumisangels.com?subject=New Subscriber&body=Please add me to your newsletter: ' + encodeURIComponent(email);
   showToast('✦ Welcome to the Pelumi\'s Angels community!');
   document.getElementById('newsletter-email').value = '';
 }
